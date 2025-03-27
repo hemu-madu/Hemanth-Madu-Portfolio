@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { fadeIn, slideIn } from "@/lib/animations";
-import profilePhoto from "@assets/PP Linkedin.png";
 
 export default function Hero() {
   const rightSlideAnimation = slideIn('right');
@@ -62,9 +61,13 @@ export default function Hero() {
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
               <img 
-                src={profilePhoto} 
+                src="/profile.png" 
                 alt="Hemanth Madu Profile Photo" 
                 className="object-cover w-full h-full" 
+                onError={(e) => {
+                  console.error("Image failed to load");
+                  e.currentTarget.src = "https://via.placeholder.com/300";
+                }}
               />
             </div>
           </motion.div>
