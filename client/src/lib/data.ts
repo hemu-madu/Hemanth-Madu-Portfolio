@@ -91,22 +91,22 @@ export const projects = [
     description: "Architected a scalable cloud storage platform with CP-ABE (Ciphertext-Policy Attribute-Based Encryption) for enhanced data security. Implemented end-to-end encryption mechanism reducing unauthorized data access by 95%. Optimized multi-threaded request handling, improving system performance by 30%.",
     image: "https://images.unsplash.com/photo-1633158829799-96bb15316e28",
     tags: ["Java (J2EE)", "JSP", "Servlets", "JavaScript", "MySQL"],
-    demoUrl: "https://github.com/hemu-madu",
-    githubUrl: "https://github.com/hemu-madu"
+    demoUrl: "https://github.com/hemu-madu/WebCloud-Web-Based-Cloud-Storage-for-Secure-Data-Sharing-across-Platforms",
+    githubUrl: "https://github.com/hemu-madu/WebCloud-Web-Based-Cloud-Storage-for-Secure-Data-Sharing-across-Platforms"
   },
   {
     title: "Interactive Quiz Application",
     description: "Engineered real-time quiz platform with dynamic scoring algorithm. Developed responsive backend reducing query response time by 40%. Implemented user engagement features increasing platform interaction by 30%. Utilized MongoDB for efficient data management and scalable architecture.",
     image: "https://images.unsplash.com/photo-1606326608690-4e0281b1e588",
     tags: ["Node.js", "Express.js", "MongoDB", "JavaScript"],
-    demoUrl: "https://github.com/hemu-madu",
-    githubUrl: "https://github.com/hemu-madu"
+    demoUrl: "https://github.com/hemu-madu/Interactive-Quiz",
+    githubUrl: "https://github.com/hemu-madu/Interactive-Quiz"
   },
   {
     title: "Portfolio Website",
     description: "A responsive portfolio website to showcase my skills, projects, education, and professional experience. Built with modern web technologies and responsive design principles to provide an optimal viewing experience across all devices.",
     image: "https://images.unsplash.com/photo-1519074069390-98277fc4552d",
-    tags: ["React", "Tailwind CSS", "TypeScript"],
+    tags: ["React", "Tailwind CSS", "TypeScript", "Framer Motion"],
     demoUrl: "https://github.com/hemu-madu",
     githubUrl: "https://github.com/hemu-madu"
   }
