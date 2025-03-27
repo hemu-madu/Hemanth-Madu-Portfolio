@@ -4,6 +4,9 @@ import ProgressBar from "@/components/ui/ProgressBar";
 import { technicalSkills, designSkills } from "@/lib/data";
 
 export default function Skills() {
+  const leftSlideAnimation = slideIn('left');
+  const rightSlideAnimation = slideIn('right');
+
   return (
     <section id="skills" className="py-16 lg:py-24 bg-black section-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -18,12 +21,12 @@ export default function Skills() {
           <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
         </motion.div>
           
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideIn('left')}
+            variants={leftSlideAnimation}
             className="bg-gray-900/60 p-6 rounded-lg shadow-lg border border-gray-800"
           >
             <motion.h3 
@@ -55,7 +58,7 @@ export default function Skills() {
                     name={skill.name}
                     percentage={skill.percentage}
                     color="primary"
-                    delay={index * 0.15}
+                    delay={index * 0.12}
                   />
                 </motion.div>
               ))}
@@ -66,7 +69,7 @@ export default function Skills() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideIn('right')}
+            variants={rightSlideAnimation}
             className="bg-gray-900/60 p-6 rounded-lg shadow-lg border border-gray-800"
           >
             <motion.h3 
@@ -79,7 +82,7 @@ export default function Skills() {
                 textShadow: "0 0 8px rgba(255,255,255,0.3)" 
               }}
             >
-              Design Skills
+              Additional Skills
             </motion.h3>
             
             <motion.div
@@ -98,7 +101,7 @@ export default function Skills() {
                     name={skill.name}
                     percentage={skill.percentage}
                     color="secondary"
-                    delay={index * 0.15}
+                    delay={index * 0.12}
                   />
                 </motion.div>
               ))}

@@ -5,6 +5,8 @@ import { fadeIn, slideIn } from "@/lib/animations";
 import { MapPin, Mail, Phone, Globe, Download, Linkedin } from "lucide-react";
 
 export default function About() {
+  const rightSlideAnimation = slideIn('right');
+  
   return (
     <section id="about" className="py-16 lg:py-24 bg-black section-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,7 +26,7 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideIn('right')}
+            variants={rightSlideAnimation}
           >
             <Card className="p-6 md:p-8 bg-gray-900/80 border-gray-800 shadow-xl">
               <motion.p 

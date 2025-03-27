@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { fadeIn, slideIn } from "@/lib/animations";
 
 export default function Hero() {
+  const rightSlideAnimation = slideIn('right');
+  
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -30,7 +32,7 @@ export default function Hero() {
               Computer Science Engineering Student | B.Tech 2021-2025
             </h2>
             <p className="text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-              Recent Computer Science graduate with hands-on experience in Python and C. Skilled in problem-solving, eager to contribute technical expertise to innovative software development roles.
+              Enthusiastic and highly motivated Computer Science graduate with a passion for building efficient, scalable, and innovative software solutions. Skilled in Python, C, and web development technologies.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
               <Button 
@@ -55,7 +57,7 @@ export default function Hero() {
             className="lg:w-1/2 flex justify-center"
             initial="hidden"
             animate="visible"
-            variants={slideIn}
+            variants={rightSlideAnimation}
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
               <img 
