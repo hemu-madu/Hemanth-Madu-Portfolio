@@ -20,19 +20,19 @@ export default function About() {
             
             <Card className="p-6 md:p-8">
               <p className="text-gray-700 leading-relaxed mb-6">
-                I am a passionate frontend developer and UI/UX designer who has recently graduated with a Bachelor's degree in Computer Science. With a keen eye for design and a love for coding, I create responsive and user-friendly web applications.
+                I am a student at Pace Institute of Technology and Sciences, passionate about technology and web development. I'm eager to apply my knowledge and skills to create responsive and user-friendly applications.
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">
-                I believe in continuous learning and staying updated with the latest trends in web development. My goal is to build accessible, inclusive, and visually appealing digital experiences that solve real-world problems.
+                I believe in continuous learning and staying updated with the latest technologies. My goal is to build innovative solutions that solve real-world problems while continuing to grow my skills.
               </p>
               <p className="text-gray-700 leading-relaxed mb-8">
-                When I'm not coding, you can find me exploring photography, reading design blogs, or hiking in the great outdoors.
+                When I'm not studying or coding, I enjoy exploring new technologies, contributing to open-source projects, and expanding my knowledge in the tech field.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 <div className="flex items-center">
                   <MapPin className="text-primary mr-3" />
-                  <span className="text-gray-700">New York, USA</span>
+                  <span className="text-gray-700">Eluru, A.P, India</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="text-primary mr-3" />
@@ -44,7 +44,7 @@ export default function About() {
                 </div>
                 <div className="flex items-center">
                   <Globe className="text-primary mr-3" />
-                  <span className="text-gray-700">www.johndoe.com</span>
+                  <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-primary">github.com/hemu-madu</a>
                 </div>
               </div>
               

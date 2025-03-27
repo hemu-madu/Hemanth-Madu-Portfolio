@@ -163,7 +163,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="text-lg font-medium mb-1">Location</h4>
-                      <p className="text-gray-300">New York, NY 10001, USA</p>
+                      <p className="text-gray-300">Eluru, A.P, India</p>
                     </div>
                   </div>
                   
@@ -195,17 +195,11 @@ export default function Contact() {
                 <div className="mt-12">
                   <h3 className="text-xl font-semibold mb-6">Follow Me</h3>
                   <div className="flex space-x-4">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                    <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
                       <FaLinkedinIn size={18} />
                     </a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                    <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
                       <FaGithub size={18} />
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                      <FaTwitter size={18} />
-                    </a>
-                    <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                      <FaDribbble size={18} />
                     </a>
                   </div>
                 </div>

@@ -24,10 +24,10 @@ export default function Hero() {
             variants={fadeIn}
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-4">
-              Hello, I'm <span className="text-primary">Your Name</span>
+              Hello, I'm <span className="text-primary">Hemanth Madu</span>
             </h1>
             <h2 className="text-xl sm:text-2xl font-medium text-gray-700 mb-6">
-              Frontend Developer & UI/UX Designer
+              Student at Pace Institute of Technology and Sciences
             </h2>
             <p className="text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
               A passionate fresher with a strong foundation in modern web technologies and design principles, ready to create engaging digital experiences.
