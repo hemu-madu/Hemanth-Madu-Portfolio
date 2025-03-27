@@ -10,16 +10,23 @@ export const fadeIn = {
   }
 };
 
-export const slideIn = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
+export const slideIn = (direction: 'left' | 'right' | 'up' | 'down') => {
+  return {
+    hidden: { 
+      opacity: 0, 
+      x: direction === 'left' ? -50 : direction === 'right' ? 50 : 0,
+      y: direction === 'up' ? -50 : direction === 'down' ? 50 : 0
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
     }
-  }
+  };
 };
 
 export const staggerContainer = {
@@ -39,6 +46,34 @@ export const scaleIn = {
     scale: 1,
     transition: {
       duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
+// New animations
+export const bounceIn = {
+  hidden: { opacity: 0, scale: 0.3 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      stiffness: 200,
+      damping: 10
+    }
+  }
+};
+
+export const rotateIn = {
+  hidden: { opacity: 0, rotate: -90, scale: 0.5 },
+  visible: {
+    opacity: 1,
+    rotate: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
       ease: "easeOut"
     }
   }
