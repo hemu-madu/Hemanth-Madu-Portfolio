@@ -19,10 +19,10 @@ export const designSkills = [
 export const education = [
   {
     type: "degree",
-    title: "Bachelor of Technology in Computer Science",
+    title: "Bachelor of Technology in Computer Science Engineering",
     institution: "Pace Institute of Technology and Sciences",
-    period: "2020 - 2024",
-    description: "Specialized in frontend development and software engineering. Participated in various hackathons and coding competitions, focusing on modern web development.",
+    period: "2021 - 2025",
+    description: "Currently pursuing with 8.56 CGPA. Specialized in frontend development and software engineering. Participated in various hackathons and coding competitions.",
     iconBg: "#e6f0ff", // light blue
     iconColor: "#3b82f6" // primary color
   },
