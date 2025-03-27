@@ -58,13 +58,13 @@ app.use((req, res, next) => {
 
   // ALWAYS serve the app on port 5000
   // this serves both the API and the client.
-  // It is the only port that is not firewalled.
+  // It is the only port that is not firewalled in Replit
   const port = 5000;
   server.listen({
     port,
-    host: "0.0.0.0",
+    host: "0.0.0.0", // This ensures the server is accessible from all network interfaces
     reusePort: true,
   }, () => {
-    log(`serving on port ${port}`);
+    log(`Server is now running at http://localhost:${port} and on Replit's public URL`);
   });
 })();
