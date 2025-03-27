@@ -20,13 +20,13 @@ export default function About() {
             
             <Card className="p-6 md:p-8">
               <p className="text-gray-700 leading-relaxed mb-6">
-                I am a student at Pace Institute of Technology and Sciences, passionate about technology and web development. I'm eager to apply my knowledge and skills to create responsive and user-friendly applications.
+                I am an enthusiastic fresher passionate about technology and web development. I'm eager to develop scalable and innovative software solutions while creating responsive and user-friendly applications.
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">
                 I believe in continuous learning and staying updated with the latest technologies. My goal is to build innovative solutions that solve real-world problems while continuing to grow my skills.
               </p>
               <p className="text-gray-700 leading-relaxed mb-8">
-                When I'm not studying or coding, I enjoy exploring new technologies, contributing to open-source projects, and expanding my knowledge in the tech field.
+                When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and expanding my knowledge in the tech field.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">

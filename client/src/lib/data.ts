@@ -19,19 +19,19 @@ export const designSkills = [
 export const education = [
   {
     type: "degree",
-    title: "Bachelor of Science in Computer Science",
-    institution: "University of Technology",
-    period: "2018 - 2022",
-    description: "Graduated with honors. Specialized in frontend development and UI/UX design. Participated in various hackathons and coding competitions.",
+    title: "Bachelor of Technology in Computer Science",
+    institution: "Pace Institute of Technology and Sciences",
+    period: "2020 - 2024",
+    description: "Specialized in frontend development and software engineering. Participated in various hackathons and coding competitions, focusing on modern web development.",
     iconBg: "#e6f0ff", // light blue
     iconColor: "#3b82f6" // primary color
   },
   {
     type: "certificate",
     title: "Full Stack Web Development Certificate",
-    institution: "CodeAcademy Bootcamp",
-    period: "2022",
-    description: "Intensive 12-week bootcamp focused on modern web technologies including React, Node.js, and responsive design principles.",
+    institution: "Udemy",
+    period: "2023",
+    description: "Comprehensive course focused on modern web technologies including React, Node.js, Express, and responsive design principles.",
     iconBg: "#e6f7ef", // light green
     iconColor: "#10b981" // secondary color
   }
