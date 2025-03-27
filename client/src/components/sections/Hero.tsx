@@ -3,8 +3,10 @@ import { Button } from "@/components/ui/button";
 import { fadeIn, slideIn } from "@/lib/animations";
 
 export default function Hero() {
+  // Animation settings
   const rightSlideAnimation = slideIn('right');
   
+  // Function to scroll to different sections of the page
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -16,9 +18,27 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-black section-gradient">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="hero" className="pt-0 pb-16 lg:pb-24 bg-black section-gradient">
+      {/* Banner at the top */}
+      <div className="w-full bg-black">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-h-[180px] overflow-hidden"
+        >
+          <img 
+            src="/hemanth-banner.png" 
+            alt="Hemanth Madu Banner" 
+            className="w-full object-cover"
+          />
+        </motion.div>
+      </div>
+      
+      {/* Main hero content */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="flex flex-col-reverse lg:flex-row items-center">
+          {/* Left side - Text content */}
           <motion.div 
             className="lg:w-1/2 mt-8 lg:mt-0 lg:pr-8 text-center lg:text-left"
             initial="hidden"
@@ -53,6 +73,7 @@ export default function Hero() {
             </div>
           </motion.div>
           
+          {/* Right side - Profile image */}
           <motion.div 
             className="lg:w-1/2 flex justify-center"
             initial="hidden"
@@ -61,7 +82,7 @@ export default function Hero() {
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
               <img 
-                src="/profile.png" 
+                src="/hemanth-profile.png" 
                 alt="Hemanth Madu Profile Photo" 
                 className="object-cover w-full h-full" 
                 onError={(e) => {
