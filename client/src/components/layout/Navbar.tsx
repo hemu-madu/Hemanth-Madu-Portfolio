@@ -55,8 +55,8 @@ export default function Navbar() {
             className="text-xl font-bold" 
             onClick={(e) => scrollToSection(e, "#hero")}
           >
-            <span className="text-primary">John</span>
-            <span className="text-green-500">Doe</span>
+            <span className="text-primary">Hemanth</span>
+            <span className="text-gray-800">Madu</span>
           </a>
           
           {/* Desktop Navigation */}

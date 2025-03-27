@@ -56,7 +56,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-white">
+    <section id="contact" className="py-16 lg:py-24 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -137,7 +137,7 @@ export default function Contact() {
                     
                     <Button 
                       type="submit" 
-                      className="w-full bg-primary hover:bg-blue-600" 
+                      className="w-full bg-black hover:bg-gray-800" 
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? "Sending..." : (
@@ -157,7 +157,7 @@ export default function Contact() {
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
                         <MapPin size={18} />
                       </div>
                     </div>
@@ -169,7 +169,7 @@ export default function Contact() {
                   
                   <div className="flex items-start">
                     <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
                         <Mail size={18} />
                       </div>
                     </div>
@@ -181,7 +181,7 @@ export default function Contact() {
                   
                   <div className="flex items-start">
                     <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
                         <Phone size={18} />
                       </div>
                     </div>
@@ -195,10 +195,10 @@ export default function Contact() {
                 <div className="mt-12">
                   <h3 className="text-xl font-semibold mb-6">Follow Me</h3>
                   <div className="flex space-x-4">
-                    <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                    <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
                       <FaLinkedinIn size={18} />
                     </a>
-                    <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                    <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
                       <FaGithub size={18} />
                     </a>
                   </div>

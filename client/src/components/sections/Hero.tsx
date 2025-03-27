@@ -14,7 +14,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gradient-to-br from-blue-50 to-green-50">
+    <section id="hero" className="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col-reverse lg:flex-row items-center">
           <motion.div 
@@ -35,7 +35,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-blue-600 text-white"
+                className="bg-black hover:bg-gray-800 text-white"
                 onClick={() => scrollToSection("contact")}
               >
                 Get in Touch
@@ -57,7 +57,7 @@ export default function Hero() {
             animate="visible"
             variants={slideIn}
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-gray-800 shadow-xl">
               <img 
                 src="/assets/profile-photo.png" 
                 alt="Profile Photo" 
