@@ -14,7 +14,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-gradient-to-br from-gray-50 to-gray-100">
+    <section id="hero" className="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-black section-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col-reverse lg:flex-row items-center">
           <motion.div 
@@ -23,19 +23,19 @@ export default function Hero() {
             animate="visible"
             variants={fadeIn}
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-4">
-              Hello, I'm <span className="text-primary">Hemanth Madu</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
+              Hello, I'm <span className="text-gradient">Hemanth Madu</span>
             </h1>
-            <h2 className="text-xl sm:text-2xl font-medium text-gray-700 mb-6">
+            <h2 className="text-xl sm:text-2xl font-medium text-gray-300 mb-6">
               Computer Science Engineering Student | B.Tech 2021-2025
             </h2>
-            <p className="text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
               Recent Computer Science graduate with hands-on experience in Python and C. Skilled in problem-solving, eager to contribute technical expertise to innovative software development roles.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                className="bg-black hover:bg-gray-800 text-white"
+                className="bg-primary hover:bg-primary/90 text-white"
                 onClick={() => scrollToSection("contact")}
               >
                 Get in Touch
@@ -43,7 +43,7 @@ export default function Hero() {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-gray-200 hover:bg-gray-50"
+                className="border-primary text-primary hover:bg-primary/10"
                 onClick={() => scrollToSection("portfolio")}
               >
                 View Portfolio
@@ -57,7 +57,7 @@ export default function Hero() {
             animate="visible"
             variants={slideIn}
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-gray-800 shadow-xl">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
               <img 
                 src="/assets/profile-photo.png" 
                 alt="Profile Photo" 

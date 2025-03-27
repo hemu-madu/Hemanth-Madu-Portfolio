@@ -8,6 +8,23 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-black text-foreground;
+    background: linear-gradient(to bottom, #000000, #111927);
+  }
+  
+  section {
+    @apply py-16;
+  }
+  
+  .section-gradient {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(17,25,39,0.95));
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#4F46E5];
+  }
+  
+  .card-hover {
+    @apply transition-transform duration-300 hover:scale-105;
   }
 }

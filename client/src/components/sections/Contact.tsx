@@ -56,7 +56,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-gray-50">
+    <section id="contact" className="py-16 lg:py-24 bg-black section-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -64,15 +64,15 @@ export default function Contact() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
         >
-          <h2 className="text-3xl font-bold text-center mb-2">Get In Touch</h2>
+          <h2 className="text-3xl font-bold text-center mb-2 text-white">Get <span className="text-gradient">In Touch</span></h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-gray-600 text-center max-w-2xl mx-auto mb-12">
+          <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
             Feel free to reach out to me for any opportunities, collaborations, or just to say hello. I'll get back to you as soon as possible.
           </p>
           
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gray-50 rounded-xl p-6 md:p-8 shadow-sm">
+              <div className="bg-gray-100 rounded-xl p-6 md:p-8 shadow-md">
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <FormField
@@ -137,7 +137,7 @@ export default function Contact() {
                     
                     <Button 
                       type="submit" 
-                      className="w-full bg-black hover:bg-gray-800" 
+                      className="w-full bg-primary hover:bg-primary/90 text-white" 
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? "Sending..." : (
@@ -151,13 +151,13 @@ export default function Contact() {
                 </Form>
               </div>
               
-              <div className="bg-gray-900 text-white rounded-xl p-6 md:p-8 shadow-sm">
+              <div className="bg-gray-900/80 text-white rounded-xl p-6 md:p-8 shadow-md border border-gray-800">
                 <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
                         <MapPin size={18} />
                       </div>
                     </div>
@@ -169,7 +169,7 @@ export default function Contact() {
                   
                   <div className="flex items-start">
                     <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
                         <Mail size={18} />
                       </div>
                     </div>
@@ -181,7 +181,7 @@ export default function Contact() {
                   
                   <div className="flex items-start">
                     <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
                         <Phone size={18} />
                       </div>
                     </div>
@@ -195,10 +195,10 @@ export default function Contact() {
                 <div className="mt-12">
                   <h3 className="text-xl font-semibold mb-6">Follow Me</h3>
                   <div className="flex space-x-4">
-                    <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/20 text-primary rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors">
                       <FaLinkedinIn size={18} />
                     </a>
-                    <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/20 text-primary rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors">
                       <FaGithub size={18} />
                     </a>
                   </div>

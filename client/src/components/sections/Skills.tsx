@@ -5,7 +5,7 @@ import { technicalSkills, designSkills } from "@/lib/data";
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 lg:py-24 bg-gray-50">
+    <section id="skills" className="py-16 lg:py-24 bg-black section-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -13,12 +13,12 @@ export default function Skills() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
         >
-          <h2 className="text-3xl font-bold text-center mb-2">My Skills</h2>
+          <h2 className="text-3xl font-bold text-center mb-2 text-white">My <span className="text-gradient">Skills</span></h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div>
-              <h3 className="text-xl font-semibold mb-6 text-gray-800">Technical Skills</h3>
+              <h3 className="text-xl font-semibold mb-6 text-gray-200">Technical Skills</h3>
               
               {technicalSkills.map((skill, index) => (
                 <ProgressBar
@@ -32,7 +32,7 @@ export default function Skills() {
             </div>
             
             <div>
-              <h3 className="text-xl font-semibold mb-6 text-gray-800">Design Skills</h3>
+              <h3 className="text-xl font-semibold mb-6 text-gray-200">Design Skills</h3>
               
               {designSkills.map((skill, index) => (
                 <ProgressBar

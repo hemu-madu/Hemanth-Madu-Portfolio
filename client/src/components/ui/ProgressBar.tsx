@@ -23,14 +23,14 @@ export default function ProgressBar({ name, percentage, color, delay = 0 }: Prog
   return (
     <div className="mb-6">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-gray-700 font-medium">{name}</span>
-        <span className="text-sm text-gray-600">{percentage}%</span>
+        <span className="text-gray-300 font-medium">{name}</span>
+        <span className="text-sm text-gray-400">{percentage}%</span>
       </div>
-      <div className="w-full bg-gray-200 rounded-full h-2.5">
+      <div className="w-full bg-gray-700 rounded-full h-3">
         <motion.div
           className={cn(
-            "h-2.5 rounded-full",
-            color === "primary" ? "bg-primary" : "bg-green-500"
+            "h-3 rounded-full",
+            color === "primary" ? "bg-primary" : "bg-indigo-400"
           )}
           initial={{ width: 0 }}
           animate={{ width: isVisible ? `${percentage}%` : 0 }}

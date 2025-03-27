@@ -29,7 +29,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       className="h-full"
     >
       <Card 
-        className="h-full overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+        className="h-full overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-gray-900/80 border-gray-800"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -43,16 +43,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             }}
           />
           <div 
-            className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end"
+            className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end"
             style={{ 
-              opacity: isHovered ? 1 : 0, 
+              opacity: isHovered ? 1 : 0.7, 
               transition: 'opacity 0.3s ease'
             }}
           >
             <div className="p-4">
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag, index) => (
-                  <Badge key={index} variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                  <Badge key={index} variant="secondary" className="bg-primary/20 text-primary hover:bg-primary/30 border border-primary/40">
                     {tag}
                   </Badge>
                 ))}
@@ -61,14 +61,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </div>
         <div className="p-6">
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">{project.title}</h3>
-          <p className="text-gray-600 mb-4">{project.description}</p>
+          <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+          <p className="text-gray-300 mb-4">{project.description}</p>
           <div className="flex justify-between items-center">
             <a 
               href={project.demoUrl} 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-primary hover:text-blue-700 font-medium flex items-center"
+              className="text-primary hover:text-primary/80 font-medium flex items-center"
             >
               View Project
               <ExternalLink className="ml-1 h-4 w-4" />
@@ -77,7 +77,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               href={project.githubUrl}
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-gray-500 hover:text-gray-700"
+              className="text-gray-400 hover:text-white"
             >
               <Github className="h-5 w-5" />
             </a>

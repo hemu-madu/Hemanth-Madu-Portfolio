@@ -6,7 +6,7 @@ import { education } from "@/lib/data";
 
 export default function Education() {
   return (
-    <section id="education" className="py-16 lg:py-24 bg-white">
+    <section id="education" className="py-16 lg:py-24 bg-black section-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -14,7 +14,7 @@ export default function Education() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
         >
-          <h2 className="text-3xl font-bold text-center mb-2">Education</h2>
+          <h2 className="text-3xl font-bold text-center mb-2 text-white"><span className="text-gradient">Education</span></h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
           
           <motion.div 
@@ -26,13 +26,13 @@ export default function Education() {
           >
             {education.map((edu, index) => (
               <motion.div key={index} variants={fadeIn}>
-                <Card className="p-6 md:p-8 mb-8">
+                <Card className="p-6 md:p-8 mb-8 bg-gray-900/80 border-gray-800 card-hover">
                   <div className="flex flex-col md:flex-row md:items-center">
                     <div className="mb-4 md:mb-0 md:mr-6">
-                      <div className="w-16 h-16 rounded-full flex items-center justify-center" 
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg" 
                         style={{ 
-                          backgroundColor: edu.iconBg, 
-                          color: edu.iconColor 
+                          backgroundColor: '#2C3E50', 
+                          color: '#FFFFFF' 
                         }}>
                         {edu.type === 'degree' ? (
                           <GraduationCap className="h-8 w-8" />
@@ -42,13 +42,13 @@ export default function Education() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{edu.title}</h3>
-                      <p className="text-gray-600 mb-2">{edu.institution}</p>
-                      <div className="flex items-center text-gray-500 mb-4">
-                        <Calendar className="mr-2 h-4 w-4" />
+                      <h3 className="text-xl font-semibold text-gray-100 mb-2">{edu.title}</h3>
+                      <p className="text-gray-300 mb-2">{edu.institution}</p>
+                      <div className="flex items-center text-gray-400 mb-4">
+                        <Calendar className="mr-2 h-4 w-4 text-primary" />
                         <span>{edu.period}</span>
                       </div>
-                      <p className="text-gray-700">{edu.description}</p>
+                      <p className="text-gray-300">{edu.description}</p>
                     </div>
                   </div>
                 </Card>
