@@ -27,10 +27,10 @@ export default function Hero() {
               Hello, I'm <span className="text-primary">Hemanth Madu</span>
             </h1>
             <h2 className="text-xl sm:text-2xl font-medium text-gray-700 mb-6">
-              Enthusiastic Fresher eager to develop scalable and innovative software solutions
+              Computer Science Engineering Student | B.Tech 2021-2025
             </h2>
             <p className="text-gray-600 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-              A passionate fresher with a strong foundation in modern web technologies and design principles, ready to create engaging digital experiences.
+              Recent Computer Science graduate with hands-on experience in Python and C. Skilled in problem-solving, eager to contribute technical expertise to innovative software development roles.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
               <Button 

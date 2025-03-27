@@ -1,18 +1,20 @@
 // Technical Skills
 export const technicalSkills = [
-  { name: "HTML/CSS", percentage: 90 },
-  { name: "JavaScript", percentage: 85 },
-  { name: "React.js", percentage: 80 },
-  { name: "Tailwind CSS", percentage: 85 },
-  { name: "Node.js", percentage: 75 }
+  { name: "C", percentage: 85 },
+  { name: "Python", percentage: 85 },
+  { name: "HTML/CSS", percentage: 80 },
+  { name: "JavaScript", percentage: 75 },
+  { name: "Object-Oriented Programming", percentage: 80 },
+  { name: "Data Structures & Algorithms", percentage: 78 }
 ];
 
-// Design Skills
+// Additional Skills
 export const designSkills = [
-  { name: "UI/UX Design", percentage: 85 },
-  { name: "Figma", percentage: 80 },
-  { name: "Adobe XD", percentage: 75 },
-  { name: "Responsive Design", percentage: 90 }
+  { name: "Database Management Systems", percentage: 80 },
+  { name: "Problem-Solving", percentage: 85 },
+  { name: "Critical Thinking", percentage: 85 },
+  { name: "Collaboration", percentage: 90 },
+  { name: "Leadership", percentage: 85 }
 ];
 
 // Education
@@ -20,18 +22,63 @@ export const education = [
   {
     type: "degree",
     title: "Bachelor of Technology in Computer Science Engineering",
-    institution: "Pace Institute of Technology and Sciences",
+    institution: "PACE Institute of Technology & Sciences, Ongole, Andhra Pradesh",
     period: "2021 - 2025",
-    description: "Currently pursuing with 8.56 CGPA. Specialized in frontend development and software engineering. Participated in various hackathons and coding competitions.",
+    description: "Currently pursuing with 8.56/10 CGPA. Chair of ACM (Association for Computing Machinery) Student Chapters, leading multiple tech initiatives.",
     iconBg: "#e6f0ff", // light blue
     iconColor: "#3b82f6" // primary color
   },
   {
+    type: "education",
+    title: "Intermediate (MPC, State Syllabus)",
+    institution: "Sri Chaitanya Junior College, Eluru, Andhra Pradesh",
+    period: "2019 - 2021",
+    description: "Completed with 78.9%",
+    iconBg: "#fdf2f8", // light pink
+    iconColor: "#ec4899" // pink
+  },
+  {
+    type: "education",
+    title: "Secondary School Certificate (SSC)",
+    institution: "Sri Bharathi High School, Eluru, Andhra Pradesh",
+    period: "2018 - 2019",
+    description: "Completed with 92%",
+    iconBg: "#ede9fe", // light purple
+    iconColor: "#8b5cf6" // purple
+  },
+  {
     type: "certificate",
-    title: "Full Stack Web Development Certificate",
-    institution: "Udemy",
-    period: "2023",
-    description: "Comprehensive course focused on modern web technologies including React, Node.js, Express, and responsive design principles.",
+    title: "Artificial Intelligence Primer Certification",
+    institution: "Infosys Springboard",
+    period: "January 2024",
+    description: "Acquired knowledge in AI fundamentals and practical applications.",
+    iconBg: "#e6f7ef", // light green
+    iconColor: "#10b981" // secondary color
+  },
+  {
+    type: "certificate",
+    title: "PCAP-Programming Essentials in Python",
+    institution: "Cisco",
+    period: "March 2023",
+    description: "Mastered Python programming fundamentals and essential techniques.",
+    iconBg: "#e6f7ef", // light green
+    iconColor: "#10b981" // secondary color
+  },
+  {
+    type: "certificate",
+    title: "Introduction to Internet of Things",
+    institution: "NPTEL",
+    period: "January - April 2024",
+    description: "Learned about IoT architecture, implementation, and applications.",
+    iconBg: "#e6f7ef", // light green
+    iconColor: "#10b981" // secondary color
+  },
+  {
+    type: "certificate",
+    title: "Cyber Security Virtual Internship",
+    institution: "EduSkills (Palo Alto Cybersecurity Academy)",
+    period: "December 2022 - February 2023",
+    description: "Gained hands-on experience in cybersecurity practices and tools.",
     iconBg: "#e6f7ef", // light green
     iconColor: "#10b981" // secondary color
   }
@@ -40,51 +87,27 @@ export const education = [
 // Projects
 export const projects = [
   {
-    title: "E-commerce Website",
-    description: "A responsive e-commerce website with product filtering, cart functionality, and checkout process.",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    tags: ["React", "Tailwind"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com"
+    title: "Web Cloud Data Storage System",
+    description: "Architected a scalable cloud storage platform with CP-ABE (Ciphertext-Policy Attribute-Based Encryption) for enhanced data security. Implemented end-to-end encryption mechanism reducing unauthorized data access by 95%. Optimized multi-threaded request handling, improving system performance by 30%.",
+    image: "https://images.unsplash.com/photo-1633158829799-96bb15316e28",
+    tags: ["Java (J2EE)", "JSP", "Servlets", "JavaScript", "MySQL"],
+    demoUrl: "https://github.com/hemu-madu",
+    githubUrl: "https://github.com/hemu-madu"
   },
   {
-    title: "Task Management App",
-    description: "A task management application with drag-and-drop functionality, task filtering, and user authentication.",
-    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d",
-    tags: ["React", "Firebase"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com"
-  },
-  {
-    title: "Recipe Finder App",
-    description: "A recipe search application that allows users to find recipes based on ingredients, dietary restrictions, and cuisine.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-    tags: ["JavaScript", "API"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com"
+    title: "Interactive Quiz Application",
+    description: "Engineered real-time quiz platform with dynamic scoring algorithm. Developed responsive backend reducing query response time by 40%. Implemented user engagement features increasing platform interaction by 30%. Utilized MongoDB for efficient data management and scalable architecture.",
+    image: "https://images.unsplash.com/photo-1606326608690-4e0281b1e588",
+    tags: ["Node.js", "Express.js", "MongoDB", "JavaScript"],
+    demoUrl: "https://github.com/hemu-madu",
+    githubUrl: "https://github.com/hemu-madu"
   },
   {
     title: "Portfolio Website",
-    description: "A responsive portfolio website to showcase my projects, skills, and professional experience.",
+    description: "A responsive portfolio website to showcase my skills, projects, education, and professional experience. Built with modern web technologies and responsive design principles to provide an optimal viewing experience across all devices.",
     image: "https://images.unsplash.com/photo-1519074069390-98277fc4552d",
-    tags: ["React", "Tailwind"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com"
-  },
-  {
-    title: "Weather App",
-    description: "A weather application that provides real-time weather data and forecasts based on location.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
-    tags: ["JavaScript", "API"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com"
-  },
-  {
-    title: "Blog Platform",
-    description: "A full-stack blog platform with user authentication, content management, and commenting system.",
-    image: "https://images.unsplash.com/photo-1505238680356-667803448bb6",
-    tags: ["React", "Node.js"],
-    demoUrl: "https://example.com",
-    githubUrl: "https://github.com"
+    tags: ["React", "Tailwind CSS", "TypeScript"],
+    demoUrl: "https://github.com/hemu-madu",
+    githubUrl: "https://github.com/hemu-madu"
   }
 ];

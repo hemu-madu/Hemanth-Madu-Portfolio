@@ -20,13 +20,13 @@ export default function About() {
             
             <Card className="p-6 md:p-8">
               <p className="text-gray-700 leading-relaxed mb-6">
-                I am an enthusiastic fresher passionate about technology and web development. I'm eager to develop scalable and innovative software solutions while creating responsive and user-friendly applications.
+                Recent Computer Science graduate with hands-on experience in Python and C from academic projects. Skilled in problem-solving, eager to contribute technical expertise to innovative software development roles.
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">
-                I believe in continuous learning and staying updated with the latest technologies. My goal is to build innovative solutions that solve real-world problems while continuing to grow my skills.
+                I'm particularly interested in scalable software solutions and cloud-based applications. My academic journey has equipped me with strong foundations in computer science fundamentals, data structures, and algorithms.
               </p>
               <p className="text-gray-700 leading-relaxed mb-8">
-                When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and expanding my knowledge in the tech field.
+                As Chair of ACM Student Chapters at PACE Institute of Technology & Sciences, I've led multiple technical initiatives that have enhanced my leadership and collaboration skills. When I'm not coding, I enjoy technical volunteering and cooking.
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
