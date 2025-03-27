@@ -24,7 +24,7 @@ export default function Hero() {
             variants={fadeIn}
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-4">
-              Hello, I'm <span className="text-primary">John Doe</span>
+              Hello, I'm <span className="text-primary">Your Name</span>
             </h1>
             <h2 className="text-xl sm:text-2xl font-medium text-gray-700 mb-6">
               Frontend Developer & UI/UX Designer
@@ -59,8 +59,8 @@ export default function Hero() {
           >
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d" 
-                alt="John Doe" 
+                src="/assets/profile-photo.png" 
+                alt="Profile Photo" 
                 className="object-cover w-full h-full" 
               />
             </div>
