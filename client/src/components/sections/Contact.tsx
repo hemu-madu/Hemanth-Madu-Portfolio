@@ -1,59 +1,11 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { fadeIn } from "@/lib/animations";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { 
-  Form, 
-  FormControl, 
-  FormField, 
-  FormItem, 
-  FormLabel, 
-  FormMessage 
-} from "@/components/ui/form";
-import { contactFormSchema } from "@shared/schema";
-import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
-import { MapPin, Mail, Phone, Send } from "lucide-react";
-import { FaLinkedinIn, FaGithub, FaTwitter, FaDribbble } from "react-icons/fa";
+import { MapPin, Mail, Phone, ExternalLink } from "lucide-react";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-  
-  const form = useForm({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: ""
-    }
-  });
-
-  const onSubmit = async (data: any) => {
-    setIsSubmitting(true);
-    try {
-      await apiRequest("POST", "/api/contact", data);
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I will get back to you soon.",
-        variant: "default",
-      });
-      form.reset();
-    } catch (error) {
-      toast({
-        title: "Failed to send message",
-        description: error instanceof Error ? error.message : "Please try again later.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  // Google Form embed URL - this sends form submissions to hemanthmadu6454@gmail.com
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSejrQGQMtrk7dHvOkMKXgCf4tvnXHB1Y16iS6BIc8Eqzgpe8g/viewform?embedded=true";
 
   return (
     <section id="contact" className="py-16 lg:py-24 bg-black section-gradient">
@@ -72,83 +24,30 @@ export default function Contact() {
           
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gray-100 rounded-xl p-6 md:p-8 shadow-md">
-                <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                    <FormField
-                      control={form.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Your Name" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Your Email" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Subject</FormLabel>
-                          <FormControl>
-                            <Input placeholder="Subject" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <FormField
-                      control={form.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Textarea 
-                              placeholder="Your Message" 
-                              rows={5} 
-                              {...field} 
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-primary hover:bg-primary/90 text-white" 
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Sending..." : (
-                        <>
-                          <span>Send Message</span>
-                          <Send className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </Form>
+              <div className="bg-gray-100 rounded-xl p-6 md:p-8 shadow-md overflow-hidden">
+                <h3 className="text-xl font-semibold mb-4 text-gray-800">Send a Message</h3>
+                
+                <div className="relative h-[480px] -mx-4 -mb-4 mt-2">
+                  <iframe 
+                    src={googleFormUrl}
+                    className="absolute inset-0 w-full h-full border-0"
+                    title="Contact Form"
+                  >
+                    Loading form...
+                  </iframe>
+                </div>
+                
+                <div className="mt-4 pt-4 border-t border-gray-200 text-gray-600 flex items-center justify-center gap-2">
+                  <a 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSejrQGQMtrk7dHvOkMKXgCf4tvnXHB1Y16iS6BIc8Eqzgpe8g/viewform" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center text-primary hover:text-primary/90 text-sm"
+                  >
+                    <span>Open in new window</span>
+                    <ExternalLink className="ml-1 h-3 w-3" />
+                  </a>
+                </div>
               </div>
               
               <div className="bg-gray-900/80 text-white rounded-xl p-6 md:p-8 shadow-md border border-gray-800">
