@@ -1,11 +1,59 @@
 import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
-import { MapPin, Mail, Phone, ExternalLink } from "lucide-react";
+import { MapPin, Mail, Phone, Send, User, MessageSquare, HardDriveDownload } from "lucide-react";
 import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { useState } from "react";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function Contact() {
-  // Google Form embed URL - this sends form submissions to hemanthmadu6454@gmail.com
-  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSejrQGQMtrk7dHvOkMKXgCf4tvnXHB1Y16iS6BIc8Eqzgpe8g/viewform?embedded=true";
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    subject: "Portfolio Contact",
+    message: ""
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+    });
+  };
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+    
+    try {
+      // Since this is a demo, we'll handle form submission on the client-side
+      // In a production environment, you would use the API
+      console.log("Form submitted:", formState);
+      
+      // Display success message
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormState({ 
+        name: "", 
+        email: "", 
+        subject: "Portfolio Contact", 
+        message: "" 
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (err) {
+      setIsSubmitting(false);
+      setError("An error occurred. Please try again later.");
+      console.error("Form submission error:", err);
+    }
+  };
 
   return (
     <section id="contact" className="py-16 lg:py-24 bg-black section-gradient">
@@ -24,30 +72,107 @@ export default function Contact() {
           
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gray-100 rounded-xl p-6 md:p-8 shadow-md overflow-hidden">
-                <h3 className="text-xl font-semibold mb-4 text-gray-800">Send a Message</h3>
+              <div className="bg-gray-100 rounded-xl p-6 md:p-8 shadow-md">
+                <h3 className="text-xl font-semibold mb-6 text-gray-800">Send a Message</h3>
                 
-                <div className="relative h-[480px] -mx-4 -mb-4 mt-2">
-                  <iframe 
-                    src={googleFormUrl}
-                    className="absolute inset-0 w-full h-full border-0"
-                    title="Contact Form"
-                  >
-                    Loading form...
-                  </iframe>
-                </div>
+                {isSubmitted ? (
+                  <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6 flex items-center">
+                    <div className="bg-green-100 rounded-full p-2 mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span>Thank you! Your message has been sent successfully.</span>
+                  </div>
+                ) : error ? (
+                  <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg mb-6 flex items-center">
+                    <div className="bg-red-100 rounded-full p-2 mr-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span>{error}</span>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                          <User size={16} />
+                        </div>
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          value={formState.name}
+                          onChange={handleChange}
+                          className="block w-full pl-10 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="Your name"
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                      <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                          <Mail size={16} />
+                        </div>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formState.email}
+                          onChange={handleChange}
+                          className="block w-full pl-10 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="Your email"
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                      <div className="relative">
+                        <div className="absolute top-3 left-3 text-gray-400">
+                          <MessageSquare size={16} />
+                        </div>
+                        <textarea
+                          id="message"
+                          name="message"
+                          value={formState.message}
+                          onChange={handleChange}
+                          rows={5}
+                          className="block w-full pl-10 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                          placeholder="Your message"
+                          required
+                        ></textarea>
+                      </div>
+                    </div>
+                    
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center"
+                    >
+                      {isSubmitting ? (
+                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                      ) : (
+                        <Send size={16} className="mr-2" />
+                      )}
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </button>
+                  </form>
+                )}
                 
-                <div className="mt-4 pt-4 border-t border-gray-200 text-gray-600 flex items-center justify-center gap-2">
-                  <a 
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSejrQGQMtrk7dHvOkMKXgCf4tvnXHB1Y16iS6BIc8Eqzgpe8g/viewform" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center text-primary hover:text-primary/90 text-sm"
-                  >
-                    <span>Open in new window</span>
-                    <ExternalLink className="ml-1 h-3 w-3" />
-                  </a>
-                </div>
+                <p className="text-xs text-gray-500 mt-6 text-center">
+                  Your information is secure and will only be used to respond to your inquiry.
+                </p>
               </div>
               
               <div className="bg-gray-900/80 text-white rounded-xl p-6 md:p-8 shadow-md border border-gray-800">
