@@ -48,48 +48,46 @@ export const education = [
   },
   {
     type: "education",
-    title: "Secondary School Certificate (SSC)",
+    title: "SSC (State Syllabus)",
     institution: "Sri Bharathi High School, Eluru, Andhra Pradesh",
     period: "2018 - 2019",
     description: "Completed with 92%",
     iconBg: "#ede9fe", // light purple
     iconColor: "#8b5cf6" // purple
-  },
+  }
+];
+
+// Certifications
+export const certifications = [
   {
-    type: "certificate",
     title: "Artificial Intelligence Primer Certification",
     institution: "Infosys Springboard",
     period: "January 2024",
-    description: "Acquired knowledge in AI fundamentals and practical applications.",
-    iconBg: "#e6f7ef", // light green
-    iconColor: "#10b981" // secondary color
+    description: "Acquired knowledge in AI fundamentals and practical applications."
   },
   {
-    type: "certificate",
     title: "PCAP-Programming Essentials in Python",
     institution: "Cisco",
     period: "March 2023",
-    description: "Mastered Python programming fundamentals and essential techniques.",
-    iconBg: "#e6f7ef", // light green
-    iconColor: "#10b981" // secondary color
+    description: "Mastered Python programming fundamentals and essential techniques."
   },
   {
-    type: "certificate",
     title: "Introduction to Internet of Things",
     institution: "NPTEL",
     period: "January - April 2024",
-    description: "Learned about IoT architecture, implementation, and applications.",
-    iconBg: "#e6f7ef", // light green
-    iconColor: "#10b981" // secondary color
-  },
+    description: "Learned about IoT architecture, implementation, and applications."
+  }
+];
+
+// Internships
+export const internships = [
   {
-    type: "certificate",
     title: "Cyber Security Virtual Internship",
     institution: "EduSkills (Palo Alto Cybersecurity Academy)",
     period: "December 2022 - February 2023",
-    description: "Gained hands-on experience in cybersecurity practices and tools.",
-    iconBg: "#e6f7ef", // light green
-    iconColor: "#10b981" // secondary color
+    description: "Gained hands-on experience in cybersecurity practices and tools, including threat detection, vulnerability assessment, and security implementation strategies.",
+    iconBg: "#fee2e2", // light red
+    iconColor: "#ef4444" // red
   }
 ];
 
