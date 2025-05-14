@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Interactive Quiz Application</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-quiz">
+            <stop stop-color="#667eea" offset="0%"></stop>
+            <stop stop-color="#764ba2" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-button">
+            <stop stop-color="#00c853" offset="0%"></stop>
+            <stop stop-color="#64dd17" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-wrong">
+            <stop stop-color="#ff1744" offset="0%"></stop>
+            <stop stop-color="#ff616f" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="QuizApp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background with gradient -->
+        <rect id="Background" fill="#1A1A2E" x="0" y="0" width="800" height="600"></rect>
+        
+        <!-- Grid pattern for tech feel -->
+        <g id="Grid" opacity="0.08" stroke="#FFFFFF" stroke-width="0.5">
+            <path d="M0,100 L800,100 M0,200 L800,200 M0,300 L800,300 M0,400 L800,400 M0,500 L800,500"></path>
+            <path d="M100,0 L100,600 M200,0 L200,600 M300,0 L300,600 M400,0 L400,600 M500,0 L500,600 M600,0 L600,600 M700,0 L700,600"></path>
+        </g>
+        
+        <!-- Mobile device frame -->
+        <rect id="Phone-Frame" fill="#1F1F3D" x="150" y="100" width="500" height="350" rx="20"></rect>
+        
+        <!-- Quiz app screen -->
+        <rect id="Screen" fill="url(#gradient-quiz)" x="170" y="120" width="460" height="310" rx="10"></rect>
+        
+        <!-- Quiz header -->
+        <rect id="App-Header" fill="#FFFFFF" opacity="0.1" x="190" y="140" width="420" height="50" rx="8"></rect>
+        <text id="Quiz-Title" font-family="Arial-BoldMT, Arial" font-size="18" font-weight="bold" fill="#FFFFFF" x="240" y="170">
+            Interactive Quiz
+        </text>
+        <circle id="Progress" fill="#FFFFFF" cx="550" cy="165" r="15"></circle>
+        <text id="Progress-Text" font-family="Arial, Arial" font-size="12" fill="#1A1A2E" text-anchor="middle" x="550" y="169">
+            3/10
+        </text>
+        
+        <!-- Question area -->
+        <rect id="Question-Area" fill="#FFFFFF" opacity="0.1" x="190" y="210" width="420" height="80" rx="8"></rect>
+        <text id="Question-Text" font-family="Arial, Arial" font-size="16" fill="#FFFFFF" x="210" y="245" width="380">
+            What is the primary purpose of a RESTful API in web development?
+        </text>
+        
+        <!-- Answer options -->
+        <rect id="Option1" fill="#FFFFFF" opacity="0.1" x="190" y="310" width="420" height="40" rx="8"></rect>
+        <text id="Option1-Text" font-family="Arial, Arial" font-size="14" fill="#FFFFFF" x="210" y="335">
+            A. Creating user interfaces
+        </text>
+        
+        <rect id="Option2" fill="url(#gradient-button)" opacity="0.9" x="190" y="360" width="420" height="40" rx="8"></rect>
+        <text id="Option2-Text" font-family="Arial-BoldMT, Arial" font-size="14" font-weight="bold" fill="#FFFFFF" x="210" y="385">
+            B. Enabling communication between systems
+        </text>
+        <circle id="Check-Icon" fill="#FFFFFF" cx="580" cy="380" r="10"></circle>
+        <path id="Check" d="M574,380 L578,384 L586,376" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        
+        <rect id="Option3" fill="#FFFFFF" opacity="0.1" x="190" y="410" width="420" height="40" rx="8"></rect>
+        <text id="Option3-Text" font-family="Arial, Arial" font-size="14" fill="#FFFFFF" x="210" y="435">
+            C. Database management only
+        </text>
+        
+        <rect id="Option4" fill="url(#gradient-wrong)" opacity="0.2" x="190" y="460" width="420" height="40" rx="8"></rect>
+        <text id="Option4-Text" font-family="Arial, Arial" font-size="14" fill="#FFFFFF" x="210" y="485">
+            D. Frontend styling
+        </text>
+        <circle id="X-Icon" fill="#FFFFFF" opacity="0.3" cx="580" cy="480" r="10"></circle>
+        <path id="X1" d="M576,476 L584,484" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+        <path id="X2" d="M584,476 L576,484" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+        
+        <!-- Decorative elements -->
+        <circle id="Decoration1" fill="#FFFFFF" opacity="0.1" cx="100" cy="150" r="40"></circle>
+        <circle id="Decoration2" fill="#FFFFFF" opacity="0.05" cx="700" cy="450" r="60"></circle>
+        <circle id="Decoration3" fill="#FFFFFF" opacity="0.05" cx="150" cy="500" r="30"></circle>
+        
+        <!-- Title -->
+        <text id="Title" font-family="Arial-BoldMT, Arial" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle" x="400" y="530">
+            Interactive Quiz Application
+        </text>
+        <text id="Subtitle" font-family="Arial, Arial" font-size="18" fill="#FFFFFF" opacity="0.8" text-anchor="middle" x="400" y="560">
+            Real-time Quiz with Dynamic Scoring
+        </text>
+    </g>
+</svg>
