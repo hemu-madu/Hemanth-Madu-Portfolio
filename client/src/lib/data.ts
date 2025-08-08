@@ -7,7 +7,14 @@ export const technicalSkills = [
 ];
 
 // Additional Skills
-export const designSkills = [];
+export const designSkills = [
+  { name: "Leadership", percentage: 90 },
+  { name: "Problem-Solving", percentage: 90 },
+  { name: "Critical Thinking", percentage: 90 },
+  { name: "Team Collaboration", percentage: 85 },
+  { name: "ACM Student Chapter Chair", percentage: 95 },
+  { name: "Technical Initiative Management", percentage: 85 }
+];
 
 // Education
 export const education = [
