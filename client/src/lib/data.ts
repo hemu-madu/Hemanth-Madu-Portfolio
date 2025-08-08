@@ -77,7 +77,8 @@ export const internships = [
     period: "April 2023 - June 2023",
     description: "Completed internship with a focus on web development. Developed a mini project on Interactive Quiz application, gaining practical experience in frontend and backend technologies.",
     iconBg: "#dbeafe", // light blue
-    iconColor: "#3b82f6" // blue
+    iconColor: "#3b82f6", // blue
+    logo: "/images/codetantra-logo.svg"
   },
   {
     title: "Cyber Security Virtual Internship",
@@ -85,7 +86,8 @@ export const internships = [
     period: "December 2022 - February 2023",
     description: "Gained hands-on experience in cybersecurity practices and tools, including threat detection, vulnerability assessment, and security implementation strategies.",
     iconBg: "#fee2e2", // light red
-    iconColor: "#ef4444" // red
+    iconColor: "#ef4444", // red
+    logo: "/images/eduskills-logo.svg"
   }
 ];
 

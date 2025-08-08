@@ -1,0 +1,5 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="12" fill="#3b82f6"/>
+  <text x="32" y="38" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">CT</text>
+  <path d="M16 20 L48 20 M20 28 L44 28 M24 36 L40 36 M28 44 L36 44" stroke="white" stroke-width="2" stroke-linecap="round"/>
+</svg>

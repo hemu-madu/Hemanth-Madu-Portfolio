@@ -29,12 +29,12 @@ export default function Internships() {
                 <Card className="p-6 md:p-8 mb-8 bg-gray-900/80 border-gray-800 card-hover">
                   <div className="flex flex-col md:flex-row md:items-center">
                     <div className="mb-4 md:mb-0 md:mr-6">
-                      <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg" 
-                        style={{ 
-                          backgroundColor: internship.iconBg, 
-                          color: internship.iconColor 
-                        }}>
-                        <Briefcase className="h-8 w-8" />
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+                        <img 
+                          src={internship.logo} 
+                          alt={`${internship.institution} logo`}
+                          className="w-16 h-16 object-cover rounded-full"
+                        />
                       </div>
                     </div>
                     <div>
