@@ -72,6 +72,14 @@ export const certifications = [
 // Internships
 export const internships = [
   {
+    title: "CodeTantra Internship",
+    institution: "CodeTantra",
+    period: "April 2023 - June 2023",
+    description: "Completed internship with a focus on web development. Developed a mini project on Interactive Quiz application, gaining practical experience in frontend and backend technologies.",
+    iconBg: "#dbeafe", // light blue
+    iconColor: "#3b82f6" // blue
+  },
+  {
     title: "Cyber Security Virtual Internship",
     institution: "EduSkills (Palo Alto Cybersecurity Academy)",
     period: "December 2022 - February 2023",
