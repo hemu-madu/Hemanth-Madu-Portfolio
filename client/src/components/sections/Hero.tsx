@@ -45,19 +45,19 @@ export default function Hero() {
             animate="visible"
             variants={fadeIn}
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
+            <h1 className="hero-title text-white mb-4">
               Hello, I'm <span className="text-gradient">Hemanth Madu</span>
             </h1>
-            <h2 className="text-xl sm:text-2xl font-medium text-gray-300 mb-6">
-              Computer Science Engineering Student | B.Tech 2021-2025
+            <h2 className="text-xl sm:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-primary mb-6">
+              Computer Science Engineering Graduate | B.Tech 2021-2025
             </h2>
-            <p className="text-gray-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+            <p className="text-gray-300 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-lg">
               Enthusiastic and highly motivated Computer Science graduate with a passion for building efficient, scalable, and innovative software solutions. Skilled in Python, C, and web development technologies.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary/90 text-white"
+                className="luxury-button text-white font-semibold px-8 py-4"
                 onClick={() => scrollToSection("contact")}
               >
                 Get in Touch
@@ -65,7 +65,7 @@ export default function Hero() {
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary/10"
+                className="luxury-button border-2 border-primary text-primary hover:text-white font-semibold px-8 py-4"
                 onClick={() => scrollToSection("portfolio")}
               >
                 View Portfolio
@@ -80,7 +80,7 @@ export default function Hero() {
             animate="visible"
             variants={rightSlideAnimation}
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-primary shadow-xl">
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden premium-glow">
               <img 
                 src="/hemanth-profile.png" 
                 alt="Hemanth Madu Profile Photo" 

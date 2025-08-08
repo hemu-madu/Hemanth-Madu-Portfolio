@@ -17,8 +17,8 @@ export default function Skills() {
           variants={fadeIn}
           className="mb-8"
         >
-          <h2 className="text-3xl font-bold text-center mb-2 text-white">My <span className="text-gradient">Skills</span></h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
+          <h2 className="text-4xl font-bold text-center mb-2 text-white">My <span className="text-gradient">Skills</span></h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary via-yellow-400 to-primary mx-auto mb-12 rounded-full"></div>
         </motion.div>
           
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">

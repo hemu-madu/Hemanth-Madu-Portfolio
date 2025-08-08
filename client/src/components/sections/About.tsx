@@ -18,8 +18,8 @@ export default function About() {
             variants={fadeIn}
             className="mb-8"
           >
-            <h2 className="text-3xl font-bold text-center mb-2 text-white">About <span className="text-gradient">Me</span></h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
+            <h2 className="text-4xl font-bold text-center mb-2 text-white">About <span className="text-gradient">Me</span></h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary via-yellow-400 to-primary mx-auto mb-8 rounded-full"></div>
           </motion.div>
             
           <motion.div
@@ -28,9 +28,10 @@ export default function About() {
             viewport={{ once: true, margin: "-100px" }}
             variants={rightSlideAnimation}
           >
-            <Card className="p-6 md:p-8 bg-gray-900/80 border-gray-800 shadow-xl">
+            <div className="luxury-border">
+              <Card className="luxury-content p-8 md:p-10">
               <motion.p 
-                className="text-gray-300 leading-relaxed mb-8"
+                className="text-gray-200 leading-relaxed mb-8 text-lg"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
@@ -49,35 +50,35 @@ export default function About() {
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 >
                   <MapPin className="text-primary mr-3" />
-                  <span className="text-gray-300">Eluru, A.P, India</span>
+                  <span className="text-gray-200">Eluru, A.P, India</span>
                 </motion.div>
                 <motion.div 
                   className="flex items-center"
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 >
                   <Mail className="text-primary mr-3" />
-                  <span className="text-gray-300">hemanthmadu6454@gmail.com</span>
+                  <span className="text-gray-200">hemanthmadu6454@gmail.com</span>
                 </motion.div>
                 <motion.div 
                   className="flex items-center"
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 >
                   <Phone className="text-primary mr-3" />
-                  <span className="text-gray-300">+91 9491142102</span>
+                  <span className="text-gray-200">+91 9491142102</span>
                 </motion.div>
                 <motion.div 
                   className="flex items-center"
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 >
                   <Globe className="text-primary mr-3" />
-                  <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-primary">github.com/hemu-madu</a>
+                  <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-primary">github.com/hemu-madu</a>
                 </motion.div>
                 <motion.div 
                   className="flex items-center"
                   whileHover={{ x: 5, transition: { duration: 0.2 } }}
                 >
                   <Linkedin className="text-primary mr-3" />
-                  <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-primary">linkedin.com/in/hemanth-madu</a>
+                  <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="text-gray-200 hover:text-primary">linkedin.com/in/hemanth-madu</a>
                 </motion.div>
               </motion.div>
               
@@ -89,7 +90,7 @@ export default function About() {
               >
                 <Button 
                   variant="default" 
-                  className="bg-primary hover:bg-primary/90 text-white transform transition-transform hover:scale-105"
+                  className="luxury-button text-white font-semibold px-8 py-4"
                   asChild
                 >
                   <a 
@@ -102,7 +103,8 @@ export default function About() {
                   </a>
                 </Button>
               </motion.div>
-            </Card>
+              </Card>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -13,9 +13,9 @@ export default function Portfolio() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
         >
-          <h2 className="text-3xl font-bold text-center mb-2 text-white">My <span className="text-gradient">Portfolio</span></h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
+          <h2 className="text-4xl font-bold text-center mb-2 text-white">My <span className="text-gradient">Portfolio</span></h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-primary via-yellow-400 to-primary mx-auto mb-6 rounded-full"></div>
+          <p className="text-gray-200 text-center max-w-2xl mx-auto mb-12 text-lg">
             Here are some of my recent projects that showcase my skills and experience in software development and problem-solving.
           </p>
           
