@@ -2,29 +2,12 @@
 export const technicalSkills = [
   { name: "C", percentage: 90 },
   { name: "Python", percentage: 90 },
-  { name: "Java", percentage: 85 },
-  { name: "HTML/CSS", percentage: 85 },
-  { name: "JavaScript", percentage: 80 },
-  { name: "Node.js", percentage: 80 },
-  { name: "MongoDB", percentage: 80 },
-  { name: "MySQL", percentage: 85 },
-  { name: "React", percentage: 75 },
+  { name: "HTML/CSS/JavaScript", percentage: 80 },
   { name: "Data Structures & Algorithms", percentage: 85 }
 ];
 
 // Additional Skills
-export const designSkills = [
-  { name: "Object-Oriented Programming", percentage: 90 },
-  { name: "Database Management Systems", percentage: 85 },
-  { name: "Problem-Solving", percentage: 90 },
-  { name: "Critical Thinking", percentage: 90 },
-  { name: "Cloud Technologies", percentage: 75 },
-  { name: "Cybersecurity", percentage: 80 },
-  { name: "Team Collaboration", percentage: 90 },
-  { name: "Project Management", percentage: 85 },
-  { name: "Artificial Intelligence", percentage: 75 },
-  { name: "Leadership", percentage: 85 }
-];
+export const designSkills = [];
 
 // Education
 export const education = [
