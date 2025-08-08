@@ -58,7 +58,7 @@ export default function Hero() {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="hero-subtitle mb-6"
             >
-              Computer Science Engineer & Software Developer
+              Computer Science Engineer
             </motion.div>
             
             <motion.p
