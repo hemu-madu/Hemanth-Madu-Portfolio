@@ -22,8 +22,8 @@ export const education = [
     type: "degree",
     title: "Bachelor of Technology in Computer Science Engineering",
     institution: "PACE Institute of Technology & Sciences, Ongole, Andhra Pradesh",
-    period: "2021 - 2025",
-    description: "Currently pursuing with 8.56/10 CGPA. Chair of ACM (Association for Computing Machinery) Student Chapters, leading multiple tech initiatives.",
+    period: "2021 - May 2025",
+    description: "Graduated in May 2025 with 8.63/10 CGPA. Chair of ACM (Association for Computing Machinery) Student Chapters, leading multiple tech initiatives.",
     iconBg: "#e6f0ff", // light blue
     iconColor: "#3b82f6" // primary color
   },
