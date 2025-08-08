@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { fadeIn, slideIn } from "@/lib/animations";
+import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
-  // Animation settings
-  const rightSlideAnimation = slideIn('right');
-  
-  // Function to scroll to different sections of the page
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -18,82 +15,146 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="pt-0 pb-16 lg:pb-24 bg-black section-gradient">
-      {/* Banner at the top */}
-      <div className="w-full bg-black">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-full max-h-[180px] overflow-hidden"
-        >
-          <img 
-            src="/hemanth-banner.png" 
-            alt="Hemanth Madu Banner" 
-            className="w-full object-cover"
-          />
-        </motion.div>
+    <section id="hero" className="min-h-screen flex items-center justify-center section-light relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-pink-400 to-yellow-400 rounded-full blur-3xl"></div>
       </div>
       
-      {/* Main hero content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <div className="flex flex-col-reverse lg:flex-row items-center">
-          {/* Left side - Text content */}
-          <motion.div 
-            className="lg:w-1/2 mt-8 lg:mt-0 lg:pr-8 text-center lg:text-left"
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
+      <div className="container-custom relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center lg:text-left"
           >
-            <h1 className="hero-title text-white mb-4">
-              Hello, I'm <span className="text-gradient">Hemanth Madu</span>
-            </h1>
-            <h2 className="text-xl sm:text-2xl font-medium text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-primary mb-6">
-              Computer Science Engineering Graduate | B.Tech 2021-2025
-            </h2>
-            <p className="text-gray-300 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0 text-lg">
-              Enthusiastic and highly motivated Computer Science graduate with a passion for building efficient, scalable, and innovative software solutions. Skilled in Python, C, and web development technologies.
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
-              <Button 
-                size="lg" 
-                className="luxury-button text-white font-semibold px-8 py-4"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="mb-6"
+            >
+              <span className="inline-block px-4 py-2 bg-teal-50 text-teal-600 rounded-full text-sm font-medium mb-4">
+                👋 Hello, I'm
+              </span>
+            </motion.div>
+            
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="hero-title mb-6"
+            >
+              <span className="text-gray-900">Hemanth</span>{" "}
+              <span className="text-gradient-primary">Madu</span>
+            </motion.h1>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="hero-subtitle mb-6"
+            >
+              Computer Science Engineer & Software Developer
+            </motion.div>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+              className="hero-description max-w-lg mx-auto lg:mx-0"
+            >
+              Passionate about building efficient, scalable, and innovative software solutions. 
+              Skilled in Python, C, and modern web technologies with hands-on experience in 
+              full-stack development.
+            </motion.p>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <button
+                className="btn-primary"
                 onClick={() => scrollToSection("contact")}
               >
-                Get in Touch
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="luxury-button border-2 border-primary text-primary hover:text-white font-semibold px-8 py-4"
+                Get In Touch
+              </button>
+              <button
+                className="btn-outline"
                 onClick={() => scrollToSection("portfolio")}
               >
-                View Portfolio
-              </Button>
-            </div>
+                View My Work
+              </button>
+            </motion.div>
           </motion.div>
           
-          {/* Right side - Profile image */}
-          <motion.div 
-            className="lg:w-1/2 flex justify-center"
-            initial="hidden"
-            animate="visible"
-            variants={rightSlideAnimation}
+          {/* Right Content - Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="flex justify-center lg:justify-end"
           >
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden premium-glow">
-              <img 
-                src="/hemanth-profile.png" 
-                alt="Hemanth Madu Profile Photo" 
-                className="object-cover w-full h-full" 
-                onError={(e) => {
-                  console.error("Image failed to load");
-                  e.currentTarget.src = "https://via.placeholder.com/300";
-                }}
-              />
+            <div className="relative">
+              {/* Main Profile Image */}
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96">
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-400 via-blue-400 to-purple-500 rounded-3xl rotate-6 opacity-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-coral-400 via-yellow-400 to-pink-500 rounded-3xl -rotate-3 opacity-10"></div>
+                <div className="relative w-full h-full bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-white">
+                  <img
+                    src="/hemanth-profile.png"
+                    alt="Hemanth Madu"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = "https://via.placeholder.com/400x400/00BFA6/ffffff?text=HM";
+                    }}
+                  />
+                </div>
+              </div>
+              
+              {/* Floating Elements */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-2xl shadow-lg flex items-center justify-center"
+              >
+                <span className="text-2xl">🚀</span>
+              </motion.div>
+              
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 rounded-xl shadow-lg flex items-center justify-center"
+              >
+                <span className="text-xl">💻</span>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </div>
+      
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center cursor-pointer"
+          onClick={() => scrollToSection("about")}
+        >
+          <span className="text-sm text-gray-500 mb-2">Scroll Down</span>
+          <ChevronDown className="w-6 h-6 text-gray-400" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

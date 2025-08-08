@@ -1,37 +1,145 @@
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/lib/animations";
-import ProjectCard from "@/components/ui/ProjectCard";
 import { projects } from "@/lib/data";
+import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+
+interface ProjectCardProps {
+  project: {
+    title: string;
+    description: string;
+    image: string;
+    tags: string[];
+    demoUrl: string;
+    githubUrl: string;
+  };
+  index: number;
+}
+
+function ProjectCard({ project, index }: ProjectCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.6 }}
+      className="modern-card group overflow-hidden"
+    >
+      {/* Project Image */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 h-48">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        {/* Overlay Links */}
+        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <motion.a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors"
+          >
+            <Github className="w-5 h-5 text-gray-700" />
+          </motion.a>
+          <motion.a
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center shadow-lg hover:bg-teal-600 transition-colors"
+          >
+            <ExternalLink className="w-5 h-5 text-white" />
+          </motion.a>
+        </div>
+      </div>
+      
+      {/* Project Content */}
+      <div className="p-6">
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="text-xl font-semibold text-gray-900 group-hover:text-teal-600 transition-colors">
+            {project.title}
+          </h3>
+          <ArrowUpRight className="w-5 h-5 text-gray-400 group-hover:text-teal-500 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+        </div>
+        
+        <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
+          {project.description}
+        </p>
+        
+        {/* Technology Tags */}
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag, tagIndex) => (
+            <span
+              key={tagIndex}
+              className="px-3 py-1 text-xs font-medium bg-gradient-to-r from-teal-50 to-blue-50 text-teal-700 rounded-full border border-teal-100"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-16 lg:py-24 bg-black section-gradient">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="portfolio" className="section-gray">
+      <div className="container-custom">
         <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="mb-4">
+            My <span className="text-gradient-primary">Portfolio</span>
+          </h2>
+          <div className="section-divider"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Here are some of my recent projects that showcase my skills and experience 
+            in software development and problem-solving
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
+          className="responsive-grid cols-3"
         >
-          <h2 className="text-4xl font-bold text-center mb-2 text-white">My <span className="text-gradient">Portfolio</span></h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary via-yellow-400 to-primary mx-auto mb-6 rounded-full"></div>
-          <p className="text-gray-200 text-center max-w-2xl mx-auto mb-12 text-lg">
-            Here are some of my recent projects that showcase my skills and experience in software development and problem-solving.
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
+          ))}
+        </motion.div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="text-center mt-12"
+        >
+          <p className="text-lg text-gray-600 mb-6">
+            Interested in working together?
           </p>
-          
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+          <button
+            className="btn-secondary"
+            onClick={() => {
+              const element = document.getElementById('contact');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
-            {projects.map((project, index) => (
-              <motion.div key={index} variants={fadeIn}>
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </motion.div>
+            Let's Get In Touch
+          </button>
         </motion.div>
       </div>
     </section>

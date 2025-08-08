@@ -1,236 +1,240 @@
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { fadeIn } from "@/lib/animations";
-import { MapPin, Mail, Phone, Send, User, MessageSquare, HardDriveDownload } from "lucide-react";
-import { FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
-import { apiRequest } from "@/lib/queryClient";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+
+interface ContactData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 export default function Contact() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    subject: "Portfolio Contact",
-    message: ""
+  const [formData, setFormData] = useState<ContactData>({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
   });
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError(null);
     
-    try {
-      // Since this is a demo, we'll handle form submission on the client-side
-      // In a production environment, you would use the API
-      console.log("Form submitted:", formState);
-      
-      // Display success message
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({ 
-        name: "", 
-        email: "", 
-        subject: "Portfolio Contact", 
-        message: "" 
-      });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    } catch (err) {
-      setIsSubmitting(false);
-      setError("An error occurred. Please try again later.");
-      console.error("Form submission error:", err);
-    }
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Reset form
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(false);
+    
+    // Show success message (you can implement proper notification)
+    alert('Message sent successfully! I will get back to you soon.');
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-24 bg-black section-gradient">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="section-primary">
+      <div className="container-custom">
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold text-center mb-2 text-white">Get <span className="text-gradient">In Touch</span></h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-          <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12">
-            Feel free to reach out to me for any opportunities, collaborations, or just to say hello. I'll get back to you as soon as possible.
+          <h2 className="mb-4 text-white">
+            Get In <span className="text-yellow-300">Touch</span>
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-300 via-white to-coral-300 mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl text-teal-50 max-w-3xl mx-auto">
+            Ready to start your next project? Let's work together to create something amazing!
           </p>
-          
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gray-100 rounded-xl p-6 md:p-8 shadow-md">
-                <h3 className="text-xl font-semibold mb-6 text-gray-800">Send a Message</h3>
-                
-                {isSubmitted ? (
-                  <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg mb-6 flex items-center">
-                    <div className="bg-green-100 rounded-full p-2 mr-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <span>Thank you! Your message has been sent successfully.</span>
-                  </div>
-                ) : error ? (
-                  <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg mb-6 flex items-center">
-                    <div className="bg-red-100 rounded-full p-2 mr-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <span>{error}</span>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                          <User size={16} />
-                        </div>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          value={formState.name}
-                          onChange={handleChange}
-                          className="block w-full pl-10 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="Your name"
-                          required
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                      <div className="relative">
-                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                          <Mail size={16} />
-                        </div>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formState.email}
-                          onChange={handleChange}
-                          className="block w-full pl-10 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="Your email"
-                          required
-                        />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                      <div className="relative">
-                        <div className="absolute top-3 left-3 text-gray-400">
-                          <MessageSquare size={16} />
-                        </div>
-                        <textarea
-                          id="message"
-                          name="message"
-                          value={formState.message}
-                          onChange={handleChange}
-                          rows={5}
-                          className="block w-full pl-10 py-3 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                          placeholder="Your message"
-                          required
-                        ></textarea>
-                      </div>
-                    </div>
-                    
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center"
-                    >
-                      {isSubmitting ? (
-                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                      ) : (
-                        <Send size={16} className="mr-2" />
-                      )}
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </button>
-                  </form>
-                )}
-                
-                <p className="text-xs text-gray-500 mt-6 text-center">
-                  Your information is secure and will only be used to respond to your inquiry.
-                </p>
-              </div>
-              
-              <div className="bg-gray-900/80 text-white rounded-xl p-6 md:p-8 shadow-md border border-gray-800">
-                <h3 className="text-xl font-semibold mb-6">Contact Information</h3>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                        <MapPin size={18} />
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium mb-1">Location</h4>
-                      <p className="text-gray-300">Eluru, A.P, India</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                        <Mail size={18} />
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium mb-1">Email</h4>
-                      <p className="text-gray-300">hemanthmadu6454@gmail.com</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="mr-4 mt-1">
-                      <div className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary">
-                        <Phone size={18} />
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-medium mb-1">Phone</h4>
-                      <p className="text-gray-300">+91 9491142102</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-12">
-                  <h3 className="text-xl font-semibold mb-6">Follow Me</h3>
-                  <div className="flex space-x-4">
-                    <a href="https://www.linkedin.com/in/hemanth-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/20 text-primary rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors">
-                      <FaLinkedinIn size={18} />
-                    </a>
-                    <a href="https://github.com/hemu-madu" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/20 text-primary rounded-full flex items-center justify-center hover:bg-primary/30 transition-colors">
-                      <FaGithub size={18} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </motion.div>
+
+        <div className="responsive-grid cols-2 items-start">
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
+          >
+            <div>
+              <h3 className="text-2xl font-semibold text-white mb-6">Let's Start a Conversation</h3>
+              <p className="text-teal-100 text-lg leading-relaxed mb-8">
+                I'm always interested in hearing about new opportunities and exciting projects. 
+                Whether you have a question or just want to say hi, I'll try my best to get back to you!
+              </p>
+            </div>
+
+            {/* Contact Cards */}
+            <div className="space-y-6">
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="flex items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                  <Mail className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">Email</h4>
+                  <a 
+                    href="mailto:hemanthmadu6454@gmail.com"
+                    className="text-teal-100 hover:text-white transition-colors"
+                  >
+                    hemanthmadu6454@gmail.com
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="flex items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                  <Phone className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">Phone</h4>
+                  <a 
+                    href="tel:+919491142102"
+                    className="text-teal-100 hover:text-white transition-colors"
+                  >
+                    +91 9491142102
+                  </a>
+                </div>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ x: 5 }}
+                className="flex items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300"
+              >
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">Location</h4>
+                  <span className="text-teal-100">Eluru, A.P, India</span>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-blue-500 rounded-xl flex items-center justify-center mr-4">
+                  <MessageCircle className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-semibold text-gray-900">Send Message</h3>
+                  <p className="text-gray-600">I'll respond within 24 hours</p>
+                </div>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="form-input"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="form-input"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    required
+                    className="form-input"
+                    placeholder="What's this about?"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    rows={5}
+                    className="form-textarea"
+                    placeholder="Tell me more about your project..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full btn-primary flex items-center justify-center"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
