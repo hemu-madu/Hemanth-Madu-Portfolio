@@ -90,8 +90,16 @@ export default function About() {
                 <Button 
                   variant="default" 
                   className="bg-primary hover:bg-primary/90 text-white transform transition-transform hover:scale-105"
+                  asChild
                 >
-                  <Download className="mr-2 h-4 w-4" /> Download Resume
+                  <a 
+                    href="/Hemanth_Madu_Resume.pdf" 
+                    download="Hemanth_Madu_Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Download className="mr-2 h-4 w-4" /> Download Resume
+                  </a>
                 </Button>
               </motion.div>
             </Card>
