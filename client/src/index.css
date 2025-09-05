@@ -220,7 +220,6 @@
   
   .progress-fill {
     @apply h-full rounded-full;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--royal-blue) 100%);
     transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
   }
