@@ -20,7 +20,7 @@ export const designSkills = [
 export const education = [
   {
     type: "degree",
-    title: "Bachelor of Technology in Computer Science Engineering",
+    title: "Bachelor of Technology (B.Tech) in Computer Science Engineering",
     institution: "PACE Institute of Technology & Sciences, Ongole, Andhra Pradesh",
     period: "2021 - May 2025",
     description: "Graduated in May 2025 with 8.63/10 CGPA. Chair of ACM (Association for Computing Machinery) Student Chapters, leading multiple tech initiatives.",

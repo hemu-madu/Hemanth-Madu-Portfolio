@@ -29,7 +29,7 @@ export default function Footer() {
                 <span className="text-white">Hemanth</span>
                 <span className="text-gradient-coral">Madu</span>
               </h3>
-              <p className="text-gray-300 mt-2">Computer Science Engineer</p>
+              <p className="text-gray-300 mt-2">Computer Science Engineer (B.Tech)</p>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Building innovative software solutions with passion and precision. 
