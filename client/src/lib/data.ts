@@ -72,6 +72,15 @@ export const certifications = [
 // Internships
 export const internships = [
   {
+    title: "Intern at Bitsilica",
+    institution: "Bitsilica",
+    period: "June 2025 - Present",
+    description: "Currently working as an intern, gaining hands-on experience in software development and modern technologies.",
+    iconBg: "#f0fdf4", // light green
+    iconColor: "#10b981", // green
+    logo: "/images/bitsilica-logo.svg"
+  },
+  {
     title: "CodeTantra Internship",
     institution: "CodeTantra",
     period: "April 2023 - June 2023",
