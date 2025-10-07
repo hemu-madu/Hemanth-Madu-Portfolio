@@ -72,10 +72,10 @@ export const certifications = [
 // Internships
 export const internships = [
   {
-    title: "Intern at Bitsilica",
+    title: "Software Intern",
     institution: "Bitsilica",
     period: "June 2025 - Present",
-    description: "Currently working as an intern, gaining hands-on experience in software development and modern technologies.",
+    description: "Developed modules using C and Python for embedded system applications. Learned industry practices in coding, debugging, and version control. Gained expertise in Embedded C, Python, OOP, Linked List, Linux, and Microcontrollers.",
     iconBg: "#f0fdf4", // light green
     iconColor: "#10b981", // green
     logo: "/images/bitsilica-logo.svg"
