@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { fadeIn, staggerContainer } from "@/lib/animations";
 import { Calendar, Briefcase } from "lucide-react";
 import { internships } from "@/lib/data";
+import bitsilicaLogo from "@assets/bitsilica_logo_1759900946161.jfif";
 
 export default function Internships() {
   return (
@@ -31,7 +32,7 @@ export default function Internships() {
                     <div className="mb-4 md:mb-0 md:mr-6">
                       <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
                         <img 
-                          src={internship.logo} 
+                          src={internship.institution === "Bitsilica" ? bitsilicaLogo : internship.logo} 
                           alt={`${internship.institution} logo`}
                           className="w-16 h-16 object-cover rounded-full"
                         />
