@@ -5,6 +5,8 @@ import { fadeIn } from "@/lib/animations";
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useToast } from "@/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
 
 interface ContactData {
   name: string;
@@ -20,7 +22,28 @@ export default function Contact() {
     subject: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+  
+  const contactMutation = useMutation({
+    mutationFn: async (data: ContactData) => {
+      const response = await apiRequest('POST', '/api/contact', data);
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out! I'll get back to you within 24 hours.",
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Error",
+        description: error.message || "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -32,17 +55,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
-    
-    // Show success message (you can implement proper notification)
-    alert('Message sent successfully! I will get back to you soon.');
+    contactMutation.mutate(formData);
   };
 
   return (
@@ -148,14 +161,14 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold text-gray-900">Get In Touch</h3>
-                  <p className="text-gray-600">I'll respond within 24 hours</p>
+                  <p className="text-gray-700">I'll respond within 24 hours</p>
                 </div>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-800 mb-2">
                       Full Name
                     </label>
                     <input
@@ -164,12 +177,12 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="form-input"
+                      className="form-input text-gray-900"
                       placeholder="Your full name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-800 mb-2">
                       Email Address
                     </label>
                     <input
@@ -178,14 +191,14 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="form-input"
+                      className="form-input text-gray-900"
                       placeholder="your.email@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 mb-2">
                     Subject
                   </label>
                   <input
@@ -194,13 +207,13 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="form-input"
+                    className="form-input text-gray-900"
                     placeholder="What's this about?"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-800 mb-2">
                     Message
                   </label>
                   <textarea
@@ -209,17 +222,17 @@ export default function Contact() {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="form-textarea"
+                    className="form-textarea text-gray-900"
                     placeholder="Tell me more about your project..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={contactMutation.isPending}
                   className="w-full btn-primary flex items-center justify-center"
                 >
-                  {isSubmitting ? (
+                  {contactMutation.isPending ? (
                     <>
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                       Sending...
