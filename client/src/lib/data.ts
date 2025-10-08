@@ -3,7 +3,9 @@ export const technicalSkills = [
   { name: "C", percentage: 90 },
   { name: "Python", percentage: 90 },
   { name: "HTML/CSS/JavaScript", percentage: 80 },
-  { name: "Data Structures & Algorithms", percentage: 85 }
+  { name: "Data Structures & Algorithms", percentage: 85 },
+  { name: "Linux", percentage: 80 },
+  { name: "OOPs", percentage: 85 }
 ];
 
 // Additional Skills
