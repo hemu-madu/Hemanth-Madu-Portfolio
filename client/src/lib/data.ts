@@ -71,6 +71,27 @@ export const certifications = [
   }
 ];
 
+// Leadership Experience
+export const leadership = [
+  {
+    title: "Chair – ACM Student Chapter",
+    institution: "PACE Institute of Technology & Sciences",
+    period: "2021 - 2025",
+    membershipId: "8730306",
+    organization: "Association for Computing Machinery (ACM)",
+    responsibilities: [
+      "Leadership & Coordination: Directed the ACM Student Chapter, managing all technical, academic, and community initiatives to strengthen the computing culture on campus.",
+      "Event Management: Organized coding competitions, technical workshops, hackathons, and seminars featuring industry professionals and alumni.",
+      "Team Supervision: Led a team of coordinators and volunteers, delegating tasks, mentoring members, and ensuring effective collaboration with faculty advisors.",
+      "Innovation & Outreach: Launched innovative programs promoting research, open-source contributions, and skill development among students.",
+      "Networking: Built partnerships with other ACM chapters and external organizations to expand learning and professional opportunities.",
+      "Mentorship: Guided junior members and nurtured future student leaders for sustainable chapter growth."
+    ],
+    iconBg: "#dbeafe",
+    iconColor: "#3b82f6"
+  }
+];
+
 // Internships
 export const internships = [
   {
