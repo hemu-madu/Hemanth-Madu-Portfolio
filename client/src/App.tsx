@@ -1,6 +1,7 @@
 import { Switch, Route } from "wouter";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 /**
  * Main App Component - This is the starting point of your website
@@ -12,13 +13,15 @@ import Home from "@/pages/Home";
  */
 function App() {
   return (
-    <Switch>
-      {/* Main portfolio page - shown when someone visits your website */}
-      <Route path="/" component={Home} />
-      
-      {/* Error page - shown if someone tries to visit a page that doesn't exist */}
-      <Route component={NotFound} />
-    </Switch>
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <Switch>
+        {/* Main portfolio page - shown when someone visits your website */}
+        <Route path="/" component={Home} />
+
+        {/* Error page - shown if someone tries to visit a page that doesn't exist */}
+        <Route component={NotFound} />
+      </Switch>
+    </ThemeProvider>
   );
 }
 

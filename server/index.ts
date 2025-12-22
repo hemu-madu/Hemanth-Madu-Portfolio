@@ -62,8 +62,7 @@ app.use((req, res, next) => {
   const port = 5000;
   server.listen({
     port,
-    host: "0.0.0.0", // This ensures the server is accessible from all network interfaces
-    reusePort: true,
+    host: "0.0.0.0",
   }, () => {
     log(`Server is now running at http://localhost:${port} and on Replit's public URL`);
   });

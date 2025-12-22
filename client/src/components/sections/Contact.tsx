@@ -4,9 +4,8 @@ import { Card } from "@/components/ui/card";
 import { fadeIn } from "@/lib/animations";
 import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { useState } from "react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
+import emailjs from "@emailjs/browser";
 
 interface ContactData {
   name: string;
@@ -22,28 +21,8 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  
-  const contactMutation = useMutation({
-    mutationFn: async (data: ContactData) => {
-      const response = await apiRequest('POST', '/api/contact', data);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out! I'll get back to you within 24 hours.",
-      });
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    },
-    onError: (error: any) => {
-      toast({
-        title: "Error",
-        description: error.message || "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
-    },
-  });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -55,12 +34,71 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    contactMutation.mutate(formData);
+    setIsSubmitting(true);
+
+    const serviceId = "service_l2kzfr9";
+    const templateId = "template_84mfy7j";
+    const publicKey = "RRH4Jf0jkFJJvwO-Y";
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_name: "Hemanth",
+    };
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out! I'll get back to you within 24 hours.",
+      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error: any) {
+      console.error("EmailJS Error:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact me directly via email.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="section-primary">
-      <div className="container-custom">
+    <section id="contact" className="py-20 bg-background relative overflow-hidden">
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ y: [0, -15, 0], x: [0, 10, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-10 right-[5%] opacity-5"
+        >
+          <MessageCircle className="w-32 h-32 text-primary" />
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [0, 15, 0], x: [0, -10, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-10 left-[5%] opacity-5"
+        >
+          <Mail className="w-24 h-24 text-blue-500" />
+        </motion.div>
+
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/2 left-[-50px] w-64 h-64 border-2 border-primary/5 border-dashed rounded-full"
+        />
+      </div>
+
+      <div className="container-custom relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,11 +106,11 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="mb-4 text-white">
-            Get In <span className="text-yellow-300">Touch</span>
+          <h2 className="mb-4">
+            Get In <span className="text-gradient-primary">Touch</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-yellow-300 via-white to-coral-300 mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-teal-50 max-w-3xl mx-auto">
+          <div className="section-divider"></div>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Ready to start your next project? Let's work together to create something amazing!
           </p>
         </motion.div>
@@ -87,9 +125,9 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-semibold text-white mb-6">Let's Start a Conversation</h3>
-              <p className="text-teal-100 text-lg leading-relaxed mb-8">
-                I'm always interested in hearing about new opportunities and exciting projects. 
+              <h3 className="text-2xl font-semibold text-foreground mb-6">Let's Start a Conversation</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+                I'm always interested in hearing about new opportunities and exciting projects.
                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
               </p>
             </div>
@@ -98,16 +136,16 @@ export default function Contact() {
             <div className="space-y-6">
               <motion.div
                 whileHover={{ x: 5 }}
-                className="flex items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300"
+                className="flex items-center p-6 bg-card dark:bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-yellow-300 to-coral-300 rounded-xl flex items-center justify-center mr-4 shadow-lg border-2 border-white/30">
-                  <Mail className="w-6 h-6 text-white drop-shadow-sm" />
+                <div className="w-12 h-12 bg-gradient-to-br from-yellow-300 to-coral-300 rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white mb-1">Email</h4>
-                  <a 
+                  <h4 className="font-semibold text-foreground mb-1">Email</h4>
+                  <a
                     href="mailto:hemanthmadu6454@gmail.com"
-                    className="text-teal-100 hover:text-white transition-colors"
+                    className="text-foreground font-medium hover:text-primary transition-colors"
                   >
                     hemanthmadu6454@gmail.com
                   </a>
@@ -116,16 +154,16 @@ export default function Contact() {
 
               <motion.div
                 whileHover={{ x: 5 }}
-                className="flex items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300"
+                className="flex items-center p-6 bg-card dark:bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
-                  <Phone className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mr-4">
+                  <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white mb-1">Phone</h4>
-                  <a 
+                  <h4 className="font-semibold text-foreground mb-1">Phone</h4>
+                  <a
                     href="tel:+919491142102"
-                    className="text-teal-100 hover:text-white transition-colors"
+                    className="text-foreground font-medium hover:text-primary transition-colors"
                   >
                     +91 9491142102
                   </a>
@@ -134,14 +172,21 @@ export default function Contact() {
 
               <motion.div
                 whileHover={{ x: 5 }}
-                className="flex items-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300"
+                className="flex items-center p-6 bg-card dark:bg-card border border-border rounded-2xl shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4">
-                  <MapPin className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center mr-4">
+                  <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-white mb-1">Location</h4>
-                  <span className="text-teal-100">Eluru, A.P, India</span>
+                  <h4 className="font-semibold text-foreground mb-1">Location</h4>
+                  <a
+                    href="https://maps.app.goo.gl/uazX4YtAJDKZWLP26"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground font-medium hover:text-primary transition-colors block"
+                  >
+                    Eluru, A.P, India
+                  </a>
                 </div>
               </motion.div>
             </div>
@@ -154,93 +199,109 @@ export default function Contact() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl">
+            <div className="bg-card dark:bg-card backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-border">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-blue-500 rounded-xl flex items-center justify-center mr-4">
                   <MessageCircle className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold text-gray-900">Get In Touch</h3>
-                  <p className="text-gray-700">I'll respond within 24 hours</p>
+                  <h3 className="text-2xl font-semibold text-foreground">Get In Touch</h3>
+                  <p className="text-muted-foreground">I'll respond within 24 hours</p>
                 </div>
               </div>
-
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-800 mb-2">
-                      Full Name
-                    </label>
+                  <div className="relative group">
                     <input
                       type="text"
                       name="name"
+                      id="name"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="form-input text-gray-900"
-                      placeholder="Your full name"
+                      className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors bg-background/50"
+                      placeholder=" "
                     />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-800 mb-2">
-                      Email Address
+                    <label
+                      htmlFor="name"
+                      className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                    >
+                      Full Name
                     </label>
+                  </div>
+
+                  <div className="relative group">
                     <input
                       type="email"
                       name="email"
+                      id="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="form-input text-gray-900"
-                      placeholder="your.email@example.com"
+                      className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors bg-background/50"
+                      placeholder=" "
                     />
+                    <label
+                      htmlFor="email"
+                      className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                    >
+                      Email Address
+                    </label>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-800 mb-2">
-                    Subject
-                  </label>
+                <div className="relative group">
                   <input
                     type="text"
                     name="subject"
+                    id="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="form-input text-gray-900"
-                    placeholder="What's this about?"
+                    className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors bg-background/50"
+                    placeholder=" "
                   />
+                  <label
+                    htmlFor="subject"
+                    className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                  >
+                    Subject
+                  </label>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-800 mb-2">
-                    Message
-                  </label>
+                <div className="relative group">
                   <textarea
                     name="message"
+                    id="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="form-textarea text-gray-900"
-                    placeholder="Tell me more about your project..."
+                    className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors resize-none bg-background/50"
+                    placeholder=" "
                   />
+                  <label
+                    htmlFor="message"
+                    className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-6 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                  >
+                    Message
+                  </label>
                 </div>
 
                 <button
                   type="submit"
-                  disabled={contactMutation.isPending}
-                  className="w-full btn-primary flex items-center justify-center"
+                  disabled={isSubmitting}
+                  className="w-full h-14 px-8 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:bg-primary/90 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center z-10 relative overflow-hidden"
                 >
-                  {contactMutation.isPending ? (
+                  {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Sending...
+                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
+                      <span>Sending Message...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5 mr-2" />
-                      Send Message
+                      <Send className="w-6 h-6 mr-3" />
+                      <span>Send Message</span>
                     </>
                   )}
                 </button>

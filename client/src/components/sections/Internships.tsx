@@ -3,11 +3,10 @@ import { Card } from "@/components/ui/card";
 import { fadeIn, staggerContainer } from "@/lib/animations";
 import { Calendar, Briefcase } from "lucide-react";
 import { internships } from "@/lib/data";
-import bitsilicaLogo from "@assets/bitsilica_logo_1759900946161.jfif";
 
 export default function Internships() {
   return (
-    <section id="internships" className="py-16 lg:py-24 bg-black section-gradient">
+    <section id="internships" className="py-16 lg:py-24 bg-background section-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -15,11 +14,11 @@ export default function Internships() {
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeIn}
         >
-          <h2 className="text-3xl font-bold text-center mb-2 text-white"><span className="text-gradient">Internships</span></h2>
+          <h2 className="text-3xl font-bold text-center mb-2 text-foreground"><span className="text-gradient">Internships</span></h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-12"></div>
-          
-          <motion.div 
-            className="max-w-3xl mx-auto"
+
+          <motion.div
+            className="max-w-4xl mx-auto"
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -27,25 +26,29 @@ export default function Internships() {
           >
             {internships.map((internship, index) => (
               <motion.div key={index} variants={fadeIn}>
-                <Card className="p-6 md:p-8 mb-8 bg-gray-900/80 border-gray-800 card-hover">
-                  <div className="flex flex-col md:flex-row md:items-center">
-                    <div className="mb-4 md:mb-0 md:mr-6">
-                      <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg overflow-hidden">
-                        <img 
-                          src={internship.institution === "Bitsilica" ? bitsilicaLogo : internship.logo} 
-                          alt={`${internship.institution} logo`}
-                          className="w-16 h-16 object-cover rounded-full"
-                        />
+                <Card className="p-8 md:p-10 mb-8 professional-card">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="mb-6">
+                      <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center shadow-xl p-3 border border-slate-100 dark:border-slate-800 shrink-0 mx-auto transform rotate-0 hover:rotate-3 transition-transform duration-300">
+                        {internship.logo ? (
+                          <img
+                            src={internship.logo}
+                            alt={internship.institution}
+                            className="w-full h-full object-contain"
+                          />
+                        ) : (
+                          <Briefcase className="h-10 w-10 text-primary" />
+                        )}
                       </div>
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-100 mb-2">{internship.title}</h3>
-                      <p className="text-gray-300 mb-2">{internship.institution}</p>
-                      <div className="flex items-center text-gray-400 mb-4">
-                        <Calendar className="mr-2 h-4 w-4 text-primary" />
-                        <span>{internship.period}</span>
+                    <div className="w-full">
+                      <h3 className="text-2xl font-bold text-foreground mb-3">{internship.title}</h3>
+                      <p className="text-xl text-muted-foreground mb-4 font-medium">{internship.institution}</p>
+                      <div className="flex items-center justify-center text-muted-foreground mb-6 bg-secondary/50 py-2 px-4 rounded-full inline-flex mx-auto">
+                        <Calendar className="mr-2 h-5 w-5 text-primary" />
+                        <span className="font-medium">{internship.period}</span>
                       </div>
-                      <p className="text-gray-300">{internship.description}</p>
+                      <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">{internship.description}</p>
                     </div>
                   </div>
                 </Card>

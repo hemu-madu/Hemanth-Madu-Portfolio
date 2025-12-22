@@ -1,180 +1,180 @@
 import { motion } from "framer-motion";
-import { fadeIn, staggerContainer } from "@/lib/animations";
 import { technicalSkills, designSkills } from "@/lib/data";
-import { Code, Users, Lightbulb, Target } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Cpu, Globe, Database, Code2, Terminal, Layers, Users, Lightbulb, GitBranch } from "lucide-react";
 
-interface SkillBarProps {
-  name: string;
-  percentage: number;
-  delay?: number;
-  color?: 'primary' | 'coral' | 'blue' | 'yellow';
+export default function Skills() {
+  // Manual categorization of technical skills
+  const languages = technicalSkills.filter(s =>
+    ["C", "Embedded C", "Python", "OOPs", "Data Structures & Algorithms"].includes(s.name));
+
+  const webAndDb = technicalSkills.filter(s =>
+    ["HTML/CSS/JavaScript", "DBMS", "MySQL"].includes(s.name));
+
+  const tools = technicalSkills.filter(s =>
+    ["Linux", "Git & GitHub", "RTOS"].includes(s.name));
+
+  const getAllSkills = () => [...technicalSkills, ...designSkills];
+
+  const getIcon = (name: string) => {
+    const n = name.toLowerCase();
+    if (n.includes("python")) return <i className="devicon-python-plain text-lg" />;
+    if (n.includes("java")) return <i className="devicon-javascript-plain text-lg" />;
+    if (n.includes("html")) return <i className="devicon-html5-plain text-lg" />;
+    if (n.includes("c")) return <span className="font-bold text-xs">C</span>;
+    if (n.includes("mysql") || n.includes("dbms")) return <Database className="w-4 h-4" />;
+    if (n.includes("git")) return <GitBranch className="w-4 h-4" />;
+    if (n.includes("linux")) return <Terminal className="w-4 h-4" />;
+    return <Code2 className="w-4 h-4" />;
+  }
+
+  return (
+    <section id="skills" className="py-20 bg-background relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-600/5 rounded-full blur-[80px] pointer-events-none"></div>
+
+      {/* Floating Tech Icons Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-[10%] opacity-5"
+        >
+          <Code2 className="w-24 h-24 text-primary" />
+        </motion.div>
+
+        <motion.div
+          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-20 right-[10%] opacity-5"
+        >
+          <Database className="w-32 h-32 text-blue-500" />
+        </motion.div>
+
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.03, 0.06, 0.03] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-[5%] text-6xl font-mono font-bold text-primary/5 select-none"
+        >
+          {"{ }"}
+        </motion.div>
+
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], opacity: [0.03, 0.06, 0.03] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute top-1/3 right-[5%] text-6xl font-mono font-bold text-blue-500/5 select-none"
+        >
+          {"</>"}
+        </motion.div>
+      </div>
+
+      <div className="container-custom relative z-10">
+        <div className="text-center mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-bold mb-4"
+          >
+            Technical <span className="text-gradient-primary">Expertise</span>
+          </motion.h2>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "100px" }}
+            viewport={{ once: true }}
+            className="h-1 bg-primary mx-auto rounded-full mb-6"
+          />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-muted-foreground text-lg max-w-2xl mx-auto"
+          >
+            A comprehensive overview of my technical abilities and professional skills.
+          </motion.p>
+        </div>
+
+        <Tabs defaultValue="all" className="w-full">
+          <div className="flex justify-center mb-12">
+            <TabsList className="grid w-full max-w-md grid-cols-4 bg-secondary/50 p-1 rounded-full">
+              <TabsTrigger value="all" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">All</TabsTrigger>
+              <TabsTrigger value="languages" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Code</TabsTrigger>
+              <TabsTrigger value="web" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Web</TabsTrigger>
+              <TabsTrigger value="professional" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Pro</TabsTrigger>
+            </TabsList>
+          </div>
+
+          <TabsContent value="all" className="mt-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[...languages, ...webAndDb, ...tools, ...designSkills].map((skill, idx) => (
+                <SkillCard key={idx} skill={skill} idx={idx} />
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="languages" className="mt-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {languages.map((skill, idx) => (
+                <SkillCard key={idx} skill={skill} idx={idx} />
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="web" className="mt-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[...webAndDb, ...tools].map((skill, idx) => (
+                <SkillCard key={idx} skill={skill} idx={idx} />
+              ))}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="professional" className="mt-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {designSkills.map((skill, idx) => (
+                <SkillCard key={idx} skill={skill} idx={idx} isPro />
+              ))}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </section>
+  );
 }
 
-function SkillBar({ name, percentage, delay = 0, color = 'primary' }: SkillBarProps) {
-  const colorClasses = {
-    primary: 'from-teal-500 to-blue-500',
-    coral: 'from-coral-500 to-orange-500', 
-    blue: 'from-blue-500 to-purple-500',
-    yellow: 'from-yellow-500 to-orange-500'
+function SkillCard({ skill, idx, isPro = false }: { skill: any, idx: number, isPro?: boolean }) {
+  // Determine icon based on skill name
+  const getIcon = (name: string) => {
+    const n = name.toLowerCase();
+    if (n.includes("python")) return <i className="devicon-python-plain text-2xl" />;
+    if (n.includes("java")) return <i className="devicon-javascript-plain text-2xl" />;
+    if (n.includes("html") || n.includes("css")) return <i className="devicon-html5-plain text-2xl" />;
+    if (n.includes("react")) return <i className="devicon-react-original text-2xl" />;
+    if (n.includes("c") && !n.includes("css")) return <span className="font-bold text-lg font-mono">C</span>;
+    if (n.includes("sql") || n.includes("db")) return <Database className="w-6 h-6" />;
+    if (n.includes("git")) return <GitBranch className="w-6 h-6" />;
+    if (n.includes("linux")) return <Terminal className="w-6 h-6" />;
+    if (n.includes("leader") || n.includes("manage")) return <Users className="w-6 h-6" />;
+    if (n.includes("problem") || n.includes("thinking")) return <Lightbulb className="w-6 h-6" />;
+    if (n.includes("acm")) return <Code2 className="w-6 h-6" />;
+    return <Layers className="w-6 h-6" />;
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.6 }}
-      className="mb-6"
+      transition={{ delay: idx * 0.05, duration: 0.3 }}
+      whileHover={{ y: -5 }}
+      className={`bg-card hover:shadow-lg dark:hover:shadow-primary/5 transition-all duration-300 rounded-xl p-5 border border-border/50 group flex flex-col items-center justify-center gap-3 h-full ${isPro ? 'hover:border-green-500/50' : 'hover:border-primary/50'}`}
     >
-      <div className="flex justify-between items-center mb-2">
-        <span className="font-medium text-gray-700">{name}</span>
-        <span className="text-sm font-semibold text-gray-600">{percentage}%</span>
+      <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${isPro ? 'bg-green-100/50 text-green-600 dark:bg-green-900/20 dark:text-green-400' : 'bg-primary/5 text-primary'} group-hover:scale-110 transition-transform duration-300`}>
+        {getIcon(skill.name)}
       </div>
-      <div className="progress-bar">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${percentage}%` }}
-          viewport={{ once: true }}
-          transition={{ delay: delay + 0.3, duration: 1.2, ease: "easeOut" }}
-          className={`progress-fill bg-gradient-to-r ${colorClasses[color]}`}
-        ></motion.div>
-      </div>
+      <h3 className="font-medium text-sm text-center leading-tight">{skill.name}</h3>
     </motion.div>
-  );
-}
-
-export default function Skills() {
-  return (
-    <section id="skills" className="section-light">
-      <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="mb-4">
-            My <span className="text-gradient-primary">Skills</span>
-          </h2>
-          <div className="section-divider"></div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A comprehensive overview of my technical expertise and professional capabilities
-          </p>
-        </motion.div>
-
-        <div className="responsive-grid cols-2 mb-16">
-          {/* Technical Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="modern-card p-8"
-          >
-            <div className="flex items-center mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-blue-500 rounded-xl flex items-center justify-center mr-4">
-                <Code className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold">Technical Skills</h3>
-                <p className="text-gray-600">Programming & Development</p>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              {technicalSkills.map((skill, index) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  percentage={skill.percentage}
-                  delay={index * 0.1}
-                  color={index % 2 === 0 ? 'primary' : 'blue'}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Professional Skills */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="modern-card p-8"
-          >
-            <div className="flex items-center mb-8">
-              <div className="w-12 h-12 bg-gradient-to-br from-coral-400 to-orange-500 rounded-xl flex items-center justify-center mr-4">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold">Professional Skills</h3>
-                <p className="text-gray-600">Leadership & Collaboration</p>
-              </div>
-            </div>
-            
-            <div className="space-y-2">
-              {designSkills.map((skill, index) => (
-                <SkillBar
-                  key={skill.name}
-                  name={skill.name}
-                  percentage={skill.percentage}
-                  delay={index * 0.1}
-                  color={index % 2 === 0 ? 'coral' : 'yellow'}
-                />
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Additional Skills Highlights */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="responsive-grid cols-3"
-        >
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="modern-card p-6 text-center group"
-          >
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-              <Lightbulb className="w-8 h-8 text-white" />
-            </div>
-            <h4 className="text-xl font-semibold mb-2">Problem Solving</h4>
-            <p className="text-gray-600">
-              Strong analytical thinking and creative problem-solving approach to complex challenges.
-            </p>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="modern-card p-6 text-center group"
-          >
-            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-              <Target className="w-8 h-8 text-white" />
-            </div>
-            <h4 className="text-xl font-semibold mb-2">Goal Oriented</h4>
-            <p className="text-gray-600">
-              Focused on delivering high-quality results and meeting project objectives efficiently.
-            </p>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="modern-card p-6 text-center group"
-          >
-            <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-              <Users className="w-8 h-8 text-white" />
-            </div>
-            <h4 className="text-xl font-semibold mb-2">Team Player</h4>
-            <p className="text-gray-600">
-              Excellent collaboration skills with experience leading technical initiatives.
-            </p>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
   );
 }

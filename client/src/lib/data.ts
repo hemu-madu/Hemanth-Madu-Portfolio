@@ -1,11 +1,22 @@
+import paceLogo from "@/assets/pace_logo.png";
+import srichaitanyaLogo from "@/assets/srichaitanya_logo.jpg";
+import sreeBharathiLogo from "@/assets/sree_bharathi_logo.jpg";
+import acmLogo from "@/assets/acm_logo.jpg";
+import bitsilicaLogo from "@/assets/bitsilica_logo.jpg";
+
 // Technical Skills
 export const technicalSkills = [
   { name: "C", percentage: 90 },
+  { name: "Embedded C", percentage: 85 },
   { name: "Python", percentage: 90 },
   { name: "HTML/CSS/JavaScript", percentage: 80 },
   { name: "Data Structures & Algorithms", percentage: 85 },
   { name: "Linux", percentage: 80 },
-  { name: "OOPs", percentage: 85 }
+  { name: "OOPs", percentage: 85 },
+  { name: "DBMS", percentage: 90 },
+  { name: "MySQL", percentage: 90 },
+  { name: "Git & GitHub", percentage: 85 },
+  { name: "RTOS", percentage: 80 }
 ];
 
 // Additional Skills
@@ -24,28 +35,31 @@ export const education = [
     type: "degree",
     title: "Bachelor of Technology (B.Tech) in Computer Science Engineering",
     institution: "PACE Institute of Technology & Sciences, Ongole, Andhra Pradesh",
-    period: "2021 - May 2025",
+    period: "Sep 2021 - May 2025",
     description: "Graduated in May 2025 with 8.63/10 CGPA. Chair of ACM (Association for Computing Machinery) Student Chapters, leading multiple tech initiatives.",
     iconBg: "#e6f0ff", // light blue
-    iconColor: "#3b82f6" // primary color
+    iconColor: "#3b82f6", // primary color
+    logo: paceLogo
   },
   {
     type: "education",
     title: "Intermediate (MPC, State Syllabus)",
     institution: "Sri Chaitanya Junior College, Eluru, Andhra Pradesh",
-    period: "2019 - 2021",
-    description: "Completed with 78.9%",
+    period: "June 2019 - April 2021",
+    description: "Completed with 789/1000 marks (78.9%)",
     iconBg: "#fdf2f8", // light pink
-    iconColor: "#ec4899" // pink
+    iconColor: "#ec4899", // pink
+    logo: srichaitanyaLogo
   },
   {
     type: "education",
     title: "SSC (State Syllabus)",
     institution: "Sri Bharathi High School, Eluru, Andhra Pradesh",
-    period: "2018 - 2019",
-    description: "Completed with 92%",
+    period: "June 2018 - April 2019",
+    description: "Completed with 9.2/10 CGPA",
     iconBg: "#ede9fe", // light purple
-    iconColor: "#8b5cf6" // purple
+    iconColor: "#8b5cf6", // purple
+    logo: sreeBharathiLogo
   }
 ];
 
@@ -88,20 +102,21 @@ export const leadership = [
       "Mentorship: Guided junior members and nurtured future student leaders for sustainable chapter growth."
     ],
     iconBg: "#dbeafe",
-    iconColor: "#3b82f6"
+    iconColor: "#3b82f6",
+    logo: acmLogo
   }
 ];
 
 // Internships
 export const internships = [
   {
-    title: "Software Intern",
+    title: "Intern",
     institution: "Bitsilica",
     period: "June 2025 - Present",
-    description: "Developed modules using C and Python for embedded system applications. Learned industry practices in coding, debugging, and version control. Gained expertise in Embedded C, Python, OOP, Linked List, Linux, and Microcontrollers.",
+    description: "Developed modules using C and Python for embedded system applications. Learned industry practices in coding, debugging, and version control. Gained expertise in Embedded C, Python, OOP, Linked List, Linux, Microcontrollers, RTOS, Git, and GitHub.",
     iconBg: "#f0fdf4", // light green
     iconColor: "#10b981", // green
-    logo: "/images/bitsilica-logo.svg"
+    logo: "/bitsilica.jfif"
   },
   {
     title: "CodeTantra Internship",
@@ -110,7 +125,7 @@ export const internships = [
     description: "Completed internship with a focus on web development. Developed a mini project on Interactive Quiz application, gaining practical experience in frontend and backend technologies.",
     iconBg: "#dbeafe", // light blue
     iconColor: "#3b82f6", // blue
-    logo: "/images/codetantra-logo.svg"
+    logo: "/codetantra.jpg"
   },
   {
     title: "Cyber Security Virtual Internship",
@@ -119,7 +134,7 @@ export const internships = [
     description: "Gained hands-on experience in cybersecurity practices and tools, including threat detection, vulnerability assessment, and security implementation strategies.",
     iconBg: "#fee2e2", // light red
     iconColor: "#ef4444", // red
-    logo: "/images/eduskills-logo.svg"
+    logo: "/eduskills.png"
   }
 ];
 
@@ -144,9 +159,9 @@ export const projects = [
   {
     title: "Portfolio Website",
     description: "A responsive portfolio website to showcase my skills, projects, education, and professional experience. Built with modern web technologies and responsive design principles to provide an optimal viewing experience across all devices.",
-    image: "/images/portfolio-project.svg",
+    image: "/portfolio_v2.png",
     tags: ["React", "Tailwind CSS", "TypeScript", "Framer Motion"],
-    demoUrl: "https://github.com/hemu-madu",
-    githubUrl: "https://github.com/hemu-madu"
+    demoUrl: "https://github.com/hemu-madu/Hemanth-Madu-Portfolio",
+    githubUrl: "https://github.com/hemu-madu/Hemanth-Madu-Portfolio"
   }
 ];
