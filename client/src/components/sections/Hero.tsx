@@ -4,6 +4,7 @@ import { ChevronDown, Code, Database, Cpu } from "lucide-react";
 
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 import { ClayFloatingShapes } from "@/components/ui/clay-floating-shapes";
+import MagneticButton from "@/components/ui/MagneticButton";
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -119,18 +120,22 @@ export default function Hero() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
-              <button
-                className="btn-clay min-w-[160px]"
-                onClick={() => scrollToSection("portfolio")}
-              >
-                View My Work
-              </button>
-              <button
-                className="btn-outline min-w-[160px]"
-                onClick={() => window.open("/Hemanth_Madu_Resume.pdf", "_blank")}
-              >
-                Download Resume
-              </button>
+              <MagneticButton>
+                <button
+                  className="btn-clay min-w-[160px]"
+                  onClick={() => scrollToSection("portfolio")}
+                >
+                  View My Work
+                </button>
+              </MagneticButton>
+              <MagneticButton>
+                <button
+                  className="btn-outline min-w-[160px]"
+                  onClick={() => window.open("/Hemanth_Madu_Resume.pdf", "_blank")}
+                >
+                  Download Resume
+                </button>
+              </MagneticButton>
             </motion.div>
           </div>
 

@@ -2,6 +2,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/lib/animations";
 import { projects } from "@/lib/data";
 import { ExternalLink, Github, ArrowUpRight, Rocket, Layers, Laptop } from "lucide-react";
+import Spotlight from "@/components/ui/Spotlight";
 
 interface ProjectCardProps {
   project: {
@@ -59,72 +60,74 @@ function ProjectCard({ project, index }: ProjectCardProps) {
       onClick={() => window.open(project.githubUrl, "_blank")}
       className="group hybrid-card overflow-hidden relative cursor-pointer"
     >
-      <div style={{ transform: "translateZ(75px)", transformStyle: "preserve-3d" }}>
-        {/* Project Image */}
-        <div className="relative overflow-hidden bg-muted h-48 rounded-t-xl group-hover:shadow-2xl transition-all duration-300">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      <Spotlight className="h-full rounded-2xl">
+        <div style={{ transform: "translateZ(75px)", transformStyle: "preserve-3d" }}>
+          {/* Project Image */}
+          <div className="relative overflow-hidden bg-muted h-48 rounded-t-xl group-hover:shadow-2xl transition-all duration-300">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-          {/* Overlay Links */}
-          <div
-            style={{ transform: "translateZ(30px)" }}
-            className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0 text-white z-20"
-          >
-            <motion.a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors cursor-pointer"
+            {/* Overlay Links */}
+            <div
+              style={{ transform: "translateZ(30px)" }}
+              className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0 text-white z-20"
             >
-              <Github className="w-5 h-5 text-gray-700" />
-            </motion.a>
-            <motion.a
-              href={project.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={(e) => e.stopPropagation()}
-              className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center shadow-lg hover:bg-teal-600 transition-colors cursor-pointer"
-            >
-              <ExternalLink className="w-5 h-5 text-white" />
-            </motion.a>
-          </div>
-        </div>
-
-        {/* Project Content */}
-        <div className="p-6 bg-transparent rounded-b-3xl">
-          <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors translate-z-10">
-              {project.title}
-            </h3>
-            <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-          </div>
-
-          <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed text-sm">
-            {project.description}
-          </p>
-
-          {/* Technology Tags */}
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag, tagIndex) => (
-              <span
-                key={tagIndex}
-                className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/20 group-hover:bg-primary/20 transition-colors"
+              <motion.a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:bg-white transition-colors cursor-pointer"
               >
-                {tag}
-              </span>
-            ))}
+                <Github className="w-5 h-5 text-gray-700" />
+              </motion.a>
+              <motion.a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center shadow-lg hover:bg-teal-600 transition-colors cursor-pointer"
+              >
+                <ExternalLink className="w-5 h-5 text-white" />
+              </motion.a>
+            </div>
+          </div>
+
+          {/* Project Content */}
+          <div className="p-6 bg-transparent rounded-b-3xl">
+            <div className="flex items-start justify-between mb-3">
+              <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors translate-z-10">
+                {project.title}
+              </h3>
+              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+            </div>
+
+            <p className="text-muted-foreground mb-4 line-clamp-3 leading-relaxed text-sm">
+              {project.description}
+            </p>
+
+            {/* Technology Tags */}
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag, tagIndex) => (
+                <span
+                  key={tagIndex}
+                  className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full border border-primary/20 group-hover:bg-primary/20 transition-colors"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </Spotlight>
     </motion.div>
   );
 }

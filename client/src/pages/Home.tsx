@@ -12,6 +12,7 @@ const Certifications = lazy(() => import("@/components/sections/Certifications")
 const Internships = lazy(() => import("@/components/sections/Internships"));
 const Portfolio = lazy(() => import("@/components/sections/Projects"));
 const Contact = lazy(() => import("@/components/sections/Contact"));
+const Quotes = lazy(() => import("@/components/sections/Quotes"));
 const Footer = lazy(() => import("@/components/layout/Footer"));
 
 // Loading fallback component
@@ -66,6 +67,9 @@ export default function Home() {
 
           {/* Your projects and portfolio items */}
           <Portfolio />
+
+          {/* Quotes Section */}
+          <Quotes />
 
           {/* Contact form for people to reach you */}
           <Contact />

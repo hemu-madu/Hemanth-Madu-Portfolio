@@ -12,10 +12,12 @@ import { ThemeProvider } from "@/context/ThemeContext";
  * 3. If they try to visit any other URL, they see the NotFound page
  */
 import CursorFollower from "@/components/ui/cursor-follower";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <ScrollProgress />
       <CursorFollower />
       <Switch>
         {/* Main portfolio page - shown when someone visits your website */}
