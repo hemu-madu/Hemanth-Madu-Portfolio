@@ -199,7 +199,7 @@ export default function Contact() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="bg-card dark:bg-card backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-border">
+            <div className="hybrid-card p-8 shadow-lg">
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-blue-500 rounded-xl flex items-center justify-center mr-4">
                   <MessageCircle className="w-6 h-6 text-white" />
@@ -219,12 +219,12 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors bg-background/50"
+                      className="block py-4 px-4 w-full text-base text-foreground bg-background shadow-inner rounded-2xl border border-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                       placeholder=" "
                     />
                     <label
                       htmlFor="name"
-                      className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                      className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
                     >
                       Full Name
                     </label>
@@ -238,12 +238,12 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors bg-background/50"
+                      className="block py-4 px-4 w-full text-base text-foreground bg-background shadow-inner rounded-2xl border border-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                       placeholder=" "
                     />
                     <label
                       htmlFor="email"
-                      className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                      className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
                     >
                       Email Address
                     </label>
@@ -258,12 +258,12 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors bg-background/50"
+                    className="block py-4 px-4 w-full text-base text-foreground bg-background shadow-inner rounded-2xl border border-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                     placeholder=" "
                   />
                   <label
                     htmlFor="subject"
-                    className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                    className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
                   >
                     Subject
                   </label>
@@ -277,12 +277,12 @@ export default function Contact() {
                     onChange={handleInputChange}
                     required
                     rows={5}
-                    className="block py-4 px-4 w-full text-base text-foreground bg-transparent border-2 border-border/50 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:border-primary peer transition-colors resize-none bg-background/50"
+                    className="block py-4 px-4 w-full text-base text-foreground bg-background shadow-inner rounded-2xl border border-white/50 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
                     placeholder=" "
                   />
                   <label
                     htmlFor="message"
-                    className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-card px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-6 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
+                    className="absolute text-base text-muted-foreground duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-6 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none"
                   >
                     Message
                   </label>
@@ -291,7 +291,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-14 px-8 rounded-xl bg-primary text-primary-foreground font-bold text-lg hover:bg-primary/90 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center z-10 relative overflow-hidden"
+                  className="w-full h-14 btn-clay flex items-center justify-center text-lg"
                 >
                   {isSubmitting ? (
                     <>
@@ -309,7 +309,7 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 }

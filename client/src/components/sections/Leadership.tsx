@@ -44,16 +44,16 @@ export default function Leadership() {
           {leadership.map((experience, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, type: "spring", bounce: 0.4 }}
               className="relative"
             >
-              <Card className="overflow-hidden border-border bg-card shadow-lg">
+              <Card className="overflow-hidden border border-white/20 dark:border-white/5 bg-neu-light dark:bg-neu-dark shadow-neumorph dark:shadow-neumorph-dark rounded-2xl">
                 <div className="grid md:grid-cols-12 gap-0">
                   {/* Left Sidebar with Info */}
-                  <div className="md:col-span-4 bg-secondary/30 p-8 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-border">
+                  <div className="md:col-span-4 bg-neu-light/50 dark:bg-neu-dark/50 p-8 flex flex-col items-center justify-center text-center border-b md:border-b-0 md:border-r border-white/20 dark:border-white/5">
                     <div className="w-24 h-24 bg-white rounded-2xl p-2 shadow-sm mb-6">
                       {experience.logo ? (
                         <img src={experience.logo} alt={experience.organization} className="w-full h-full object-contain" />

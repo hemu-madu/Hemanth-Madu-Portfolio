@@ -40,16 +40,27 @@ export default function Education() {
 
         <div className="relative max-w-4xl mx-auto">
           {/* Vertical Line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent"></div>
+          <motion.div
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent"
+          ></motion.div>
 
           <div className="space-y-12">
             {education.map((edu, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2, duration: 0.5 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  delay: index * 0.3,
+                  type: "spring",
+                  stiffness: 50,
+                  damping: 20
+                }}
                 className={`flex flex-col md:flex-row items-center relative ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
               >
                 {/* Timeline Dot/Icon */}
@@ -59,7 +70,7 @@ export default function Education() {
 
                 {/* Content Card Side */}
                 <div className={`ml-20 md:ml-0 md:w-1/2 ${index % 2 !== 0 ? 'md:pl-12' : 'md:pr-12'}`}>
-                  <Card className="p-6 relative group hover:border-primary/50 transition-colors bg-card/50 backdrop-blur-sm">
+                  <Card className="p-6 relative group hover:border-primary/50 transition-colors bg-neu-light dark:bg-neu-dark shadow-neumorph dark:shadow-neumorph-dark border border-white/20 dark:border-white/5">
                     {/* Date Badge */}
                     <div className={`absolute -top-3 ${index % 2 !== 0 ? 'left-6' : 'md:right-6 left-6 md:left-auto'} bg-secondary text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/20`}>
                       {edu.period}

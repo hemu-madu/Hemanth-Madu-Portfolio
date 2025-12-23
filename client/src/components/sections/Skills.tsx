@@ -99,11 +99,11 @@ export default function Skills() {
 
         <Tabs defaultValue="all" className="w-full">
           <div className="flex justify-center mb-12">
-            <TabsList className="grid w-full max-w-md grid-cols-4 bg-secondary/50 p-1 rounded-full">
-              <TabsTrigger value="all" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">All</TabsTrigger>
-              <TabsTrigger value="languages" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Code</TabsTrigger>
-              <TabsTrigger value="web" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Web</TabsTrigger>
-              <TabsTrigger value="professional" className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Pro</TabsTrigger>
+            <TabsList className="grid w-full max-w-md grid-cols-4 bg-neu-light dark:bg-neu-dark shadow-neumorph-pressed dark:shadow-neumorph-pressed-dark p-2 rounded-full">
+              <TabsTrigger value="all" className="rounded-full data-[state=active]:shadow-neumorph dark:data-[state=active]:shadow-neumorph-dark data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">All</TabsTrigger>
+              <TabsTrigger value="languages" className="rounded-full data-[state=active]:shadow-neumorph dark:data-[state=active]:shadow-neumorph-dark data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Code</TabsTrigger>
+              <TabsTrigger value="web" className="rounded-full data-[state=active]:shadow-neumorph dark:data-[state=active]:shadow-neumorph-dark data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Web</TabsTrigger>
+              <TabsTrigger value="professional" className="rounded-full data-[state=active]:shadow-neumorph dark:data-[state=active]:shadow-neumorph-dark data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all">Pro</TabsTrigger>
             </TabsList>
           </div>
 
@@ -169,7 +169,7 @@ function SkillCard({ skill, idx, isPro = false }: { skill: any, idx: number, isP
       viewport={{ once: true }}
       transition={{ delay: idx * 0.05, duration: 0.3 }}
       whileHover={{ y: -5 }}
-      className={`bg-card hover:shadow-lg dark:hover:shadow-primary/5 transition-all duration-300 rounded-xl p-5 border border-border/50 group flex flex-col items-center justify-center gap-3 h-full ${isPro ? 'hover:border-green-500/50' : 'hover:border-primary/50'}`}
+      className={`bg-neu-light dark:bg-neu-dark shadow-neumorph-sm dark:shadow-neumorph-dark-sm hover:shadow-neumorph dark:hover:shadow-neumorph-dark transition-all duration-300 rounded-2xl p-5 border border-white/20 dark:border-white/5 group flex flex-col items-center justify-center gap-3 h-full ${isPro ? 'hover:border-green-500/30' : 'hover:border-primary/30'}`}
     >
       <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${isPro ? 'bg-green-100/50 text-green-600 dark:bg-green-900/20 dark:text-green-400' : 'bg-primary/5 text-primary'} group-hover:scale-110 transition-transform duration-300`}>
         {getIcon(skill.name)}

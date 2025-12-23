@@ -26,7 +26,7 @@ export default function Internships() {
           >
             {internships.map((internship, index) => (
               <motion.div key={index} variants={fadeIn}>
-                <Card className="p-8 md:p-10 mb-8 professional-card">
+                <Card className="p-8 md:p-10 mb-8 hybrid-card bg-card/80 backdrop-blur-sm">
                   <div className="flex flex-col items-center text-center">
                     <div className="mb-6">
                       <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center shadow-xl p-3 border border-slate-100 dark:border-slate-800 shrink-0 mx-auto transform rotate-0 hover:rotate-3 transition-transform duration-300">

@@ -10,7 +10,25 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        'clay': '8px 8px 16px 0px rgba(163, 177, 198, 0.6), -8px -8px 16px 0px rgba(255, 255, 255, 0.5)',
+        'clay-card': 'inset -8px -8px 16px 0px rgba(255, 255, 255, 0.8), inset 8px 8px 16px 0px rgba(163, 177, 198, 0.4), 10px 20px 30px rgba(0, 0, 0, 0.05)',
+        'clay-btn': 'inset -4px -4px 8px 0px rgba(255, 255, 255, 0.8), inset 4px 4px 8px 0px rgba(163, 177, 198, 0.4), 6px 10px 15px rgba(66, 66, 66, 0.2)',
+        'clay-btn-hover': 'inset -4px -4px 8px 0px rgba(255, 255, 255, 0.5), inset 4px 4px 8px 0px rgba(163, 177, 198, 0.2), 4px 6px 10px rgba(66, 66, 66, 0.15)',
+        'neumorph': '9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5)',
+        'neumorph-pressed': 'inset 6px 6px 10px 0 rgba(163,177,198, 0.7), inset -6px -6px 10px 0 rgba(255,255,255, 0.8)',
+        'neumorph-dark': '6px 6px 12px #0c0c0c, -6px -6px 12px #262626',
+        'neumorph-pressed-dark': 'inset 4px 4px 8px #0c0c0c, inset -4px -4px 8px #262626',
+        'neumorph-sm': '5px 5px 10px rgb(163,177,198,0.6), -5px -5px 10px rgba(255,255,255, 0.5)',
+        'neumorph-dark-sm': '3px 3px 6px #0c0c0c, -3px -3px 6px #262626',
+      },
       colors: {
+        clay: {
+          light: '#F8F9FE', // Very light blue/white
+          primary: '#6D5DFC', // Vibrant purple from image
+          secondary: '#E0C6FD',
+          accent: '#FFB8B8', // Pastel red/pink
+        },
         coral: {
           50: '#fef7f5',
           100: '#fdeee9',

@@ -16,13 +16,10 @@
   }
 
   :root {
-    /* Professional Dark Theme Dominant Variables - Defaulting to Dark Look */
-    /* Standard Light Theme Variables */
-    /* Clean White/Gray Backgrounds */
-    --background: 0 0% 100%;
-    /* #ffffff */
+    /* Hybrid Theme - Clean & Modern */
+    --background: 210 20% 98%;
+    /* #fafafa - Crisp Off-White */
     --foreground: 222.2 84% 4.9%;
-    /* Dark text for contrast */
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -30,9 +27,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    /* Electric Blue Accent - Standardized */
-    --primary: 221.2 83.2% 53.3%;
-    /* #2563eb */
+    --primary: 255 96% 68%;
+    /* Keep the vibrant purple for identity */
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -40,7 +36,6 @@
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    /* Soft gray text */
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -50,41 +45,39 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --ring: 255 96% 68%;
 
-    --radius: 0.5rem;
-
-    /* Gradients (Optional Updates for Light Mode if needed) */
-    --coral: 217 91% 60%;
-    /* Keep consistent blue */
-    --royal-blue: 260 80% 60%;
-    --bright-yellow: 180 100% 50%;
+    --radius: 1.5rem;
+    /* Slightly reduced for hybrid feel */
   }
 
   .dark {
-    /* Explicit Dark Mode Overrides (Same as root for dominance) */
-    --background: 220 15% 10%;
-    --foreground: 210 20% 98%;
+    /* Hybrid Dark Theme */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 220 15% 13%;
-    --card-foreground: 210 20% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
     --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 220 15% 16%;
-    --secondary-foreground: 210 20% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 220 15% 16%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 20% 98%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
-    --border: 217 15% 20%;
-    --input: 217 15% 20%;
-    --ring: 217 91% 60%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 255 96% 68%;
   }
+
+  /* ... Typography ... */
+  /* [Keep existing topography rules if not shown here, blindly assuming they are between these blocks or will be preserved if I don't overwrite them. Wait, ReplaceFileContent replaces the RANGE. I need to be careful not to delete the typography section if it's in the middle. The previous view showed Typography starts at line 84. My StartLine is 18. My EndLine is 172. Typography is INSIDE this range. I MUST RE-ADD TYPOGRAPHY.] */
 
   /* Typography */
   h1,
@@ -96,9 +89,7 @@
     font-weight: 700;
     line-height: 1.2;
     color: hsl(var(--foreground));
-    /* Ensure headers use foreground color */
     letter-spacing: -0.02em;
-    /* Tighten matching Inter style */
   }
 
   h1 {
@@ -136,7 +127,6 @@
     @apply py-20 transition-colors duration-300;
     position: relative;
     overflow: hidden;
-    /* Prevent overflow from background effects */
   }
 
   .section-light {
@@ -144,45 +134,92 @@
   }
 
   .section-gray {
-    @apply bg-background;
-    /* Unified dark background */
+    @apply bg-secondary/30;
   }
 
   .section-primary {
     @apply bg-primary/10 text-foreground;
-    /* Subtle tint instead of full solid */
   }
 
-  /* Cards */
-  .modern-card {
-    @apply bg-card text-card-foreground rounded-xl shadow-lg border border-border;
+  /* Hybrid Card - The Best of Both Worlds */
+  .hybrid-card {
+    @apply bg-card text-card-foreground rounded-2xl border border-border/50;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+    /* Clean, modern shadow */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
   }
 
-  .modern-card:hover {
-    @apply shadow-xl border-primary/50;
+  .dark .hybrid-card {
+    background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--secondary)));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .hybrid-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.12);
+    border-color: hsl(var(--primary) / 0.3);
   }
 
-  /* Buttons - Clean Professional Style */
+  .dark .hybrid-card:hover {
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.7);
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  /* Legacy / Clay Card mapped to Hybrid for ease if missed */
+  .clay-card {
+    @apply hybrid-card;
+  }
+
+  /* Buttons - Clay Style */
+  .btn-clay {
+    @apply bg-primary text-white font-bold py-4 px-8 rounded-full;
+    box-shadow: 6px 6px 14px 0 rgba(109, 93, 252, 0.3),
+      -6px -6px 14px 0 rgba(255, 255, 255, 0.8),
+      inset 0 0 0 rgba(109, 93, 252, 0.1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-clay::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 25%;
+    height: 15%;
+    border-radius: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+    filter: blur(1px);
+  }
+
+  .btn-clay:hover {
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 18px 0 rgba(109, 93, 252, 0.4),
+      -8px -8px 18px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .btn-clay:active {
+    transform: translateY(1px);
+    box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Legacy Button Support mapped to Clay */
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-semibold py-3 px-6 rounded-lg shadow-md;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-  }
-
-  .btn-primary:hover {
-    @apply bg-primary/90 shadow-lg translate-y-[-2px] shadow-primary/25;
+    @apply btn-clay;
   }
 
   .btn-outline {
-    @apply border border-primary text-primary font-semibold py-3 px-6 rounded-lg bg-transparent;
+    @apply border-2 border-primary text-primary font-bold py-3 px-6 rounded-full bg-transparent;
     transition: all 0.2s ease;
   }
 
   .btn-outline:hover {
-    @apply bg-primary/10 translate-y-[-2px];
+    @apply bg-primary text-white;
+    box-shadow: 0 10px 20px -10px rgba(109, 93, 252, 0.5);
+    transform: translateY(-2px);
   }
 
   /* Text Gradients */
@@ -392,9 +429,20 @@
 
   /* Utility Classes */
   .container-custom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto;
+    max-width: 1400px;
+  }
+
+  /* TV / Large Screen Optimization */
+  @media (min-width: 1920px) {
+    .container-custom {
+      max-width: 1600px;
+    }
+
+    html {
+      font-size: 18px;
+      /* Slightly larger text on giant screens */
+    }
   }
 
   .text-balance {

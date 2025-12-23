@@ -9,13 +9,13 @@ export function useScrollSpy() {
 
       // Get all sections
       const sections = document.querySelectorAll("section[id]");
-      
+
       // Find the current section
       sections.forEach((section) => {
         const sectionId = section.getAttribute("id") || "";
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.offsetHeight;
-        
+        const sectionTop = (section as HTMLElement).offsetTop - 100;
+        const sectionHeight = (section as HTMLElement).offsetHeight;
+
         if (
           scrollPosition >= sectionTop &&
           scrollPosition < sectionTop + sectionHeight
@@ -26,10 +26,10 @@ export function useScrollSpy() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    
+
     // Call it once on mount to set initial active section
     handleScroll();
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

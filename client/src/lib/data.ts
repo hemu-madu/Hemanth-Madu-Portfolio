@@ -25,8 +25,7 @@ export const designSkills = [
   { name: "Problem-Solving", percentage: 90 },
   { name: "Critical Thinking", percentage: 90 },
   { name: "Team Collaboration", percentage: 85 },
-  { name: "ACM Student Chapter Chair", percentage: 95 },
-  { name: "Technical Initiative Management", percentage: 85 }
+  { name: "ACM Student Chapter Chair", percentage: 95 }
 ];
 
 // Education

@@ -11,9 +11,12 @@ import { ThemeProvider } from "@/context/ThemeContext";
  * 2. When someone visits the main page (/) they see your portfolio (Home component)
  * 3. If they try to visit any other URL, they see the NotFound page
  */
+import CursorFollower from "@/components/ui/cursor-follower";
+
 function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <CursorFollower />
       <Switch>
         {/* Main portfolio page - shown when someone visits your website */}
         <Route path="/" component={Home} />

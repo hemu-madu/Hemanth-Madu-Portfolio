@@ -49,10 +49,10 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-4 left-4 right-4 z-50 transition-all duration-300 rounded-2xl border border-white/20 dark:border-white/5",
         scrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border"
-          : "bg-background/80 backdrop-blur-sm"
+          ? "bg-background/90 backdrop-blur-xl shadow-md border-b border-border/50 py-2"
+          : "bg-transparent py-4"
       )}
     >
       <div className="container-custom">
@@ -67,34 +67,38 @@ export default function Navbar() {
               }}
               className="text-2xl font-bold cursor-pointer"
             >
-              <span className="text-gradient-primary">Hemanth Madu</span>
+              <span className="text-primary hover:text-blue-600 transition-colors">Hemanth Madu</span>
             </a>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => scrollToSection(e, link.href)}
-                className={cn(
-                  "font-medium transition-all duration-300 hover:text-primary relative py-2",
-                  activeSection === link.href.substring(1)
-                    ? "text-primary"
-                    : "text-muted-foreground"
-                )}
-              >
-                {link.label}
-                {activeSection === link.href.substring(1) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></span>
-                )}
-              </a>
-            ))}
+          {/* Desktop Navigation - Equal Spacing Layout */}
+          <div className="hidden md:flex items-center justify-between flex-1 ml-12 mr-8">
+            <nav className="flex items-center justify-between w-full">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className={cn(
+                    "font-medium transition-all duration-300 hover:text-primary relative py-2 text-sm lg:text-base",
+                    activeSection === link.href.substring(1)
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  )}
+                >
+                  {link.label}
+                  {activeSection === link.href.substring(1) && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></span>
+                  )}
+                </a>
+              ))}
+            </nav>
+          </div>
 
-            {/* CTA Button */}
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-6">
             <button
-              className="btn-primary text-sm py-2 px-4"
+              className="font-semibold py-2 px-6 rounded-xl shadow-neumorph dark:shadow-neumorph-dark active:shadow-neumorph-pressed dark:active:shadow-neumorph-pressed-dark text-primary transition-all duration-300 hover:-translate-y-1 bg-neu-light dark:bg-neu-dark border border-white/20"
               onClick={(e) => {
                 e.preventDefault();
                 const element = document.getElementById('contact');
@@ -109,18 +113,18 @@ export default function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-full text-foreground hover:bg-secondary"
+              className="rounded-full text-foreground shadow-neumorph-sm dark:shadow-neumorph-dark-sm active:shadow-neumorph-pressed dark:active:shadow-neumorph-pressed-dark transition-all duration-300 hover:scale-105 bg-neu-light dark:bg-neu-dark"
             >
               <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
             </Button>
-          </nav>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors text-foreground"
+            className="md:hidden p-2 rounded-lg hover:bg-secondary transition-colors text-foreground ml-auto"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? (
