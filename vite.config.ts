@@ -7,9 +7,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export default defineConfig({
-  plugins: [
-    react(),
-  ],
+  base: "/Hemanth-Madu-Portfolio/",   // ⭐ VERY IMPORTANT
+  root: path.resolve(__dirname, "client"),
+
+  plugins: [react()],
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
@@ -17,9 +19,9 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "attached_assets"),
     },
   },
-  root: path.resolve(__dirname, "client"),
+
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "docs"), // ⭐ GitHub Pages folder
     emptyOutDir: true,
   },
 });
