@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
 import { useTheme } from "@/context/ThemeContext";
+import { useEffectContext } from "@/context/EffectContext";
 
 const navLinks = [
   { href: "#about", label: "About" },
@@ -22,6 +23,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const activeSection = useScrollSpy();
   const { theme, setTheme } = useTheme();
+  const { isEnabled, toggleEffect } = useEffectContext();
 
   // Handle scroll effect
   useEffect(() => {
@@ -107,6 +109,23 @@ export default function Navbar() {
             >
               Hire Me
             </button>
+
+            {/* Effect Toggle */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleEffect}
+              className={cn(
+                "rounded-full text-foreground shadow-neumorph-sm dark:shadow-neumorph-dark-sm",
+                "active:shadow-neumorph-pressed dark:active:shadow-neumorph-pressed-dark transition-all duration-300",
+                "hover:scale-105 bg-neu-light dark:bg-neu-dark",
+                isEnabled ? "text-primary" : "text-muted-foreground"
+              )}
+              title={isEnabled ? "Disable Effects" : "Enable Effects"}
+            >
+              <Sparkles className={cn("h-[1.2rem] w-[1.2rem] transition-all", isEnabled && "fill-current")} />
+              <span className="sr-only">Toggle effects</span>
+            </Button>
 
             {/* Theme Toggle */}
             <Button

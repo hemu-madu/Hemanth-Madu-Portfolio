@@ -1,26 +1,17 @@
-import { useEffect, Suspense, lazy } from "react";
+import { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import { motion } from "framer-motion";
-
-// Lazy load sections below the fold to improve initial load time
-const About = lazy(() => import("@/components/sections/About"));
-const Skills = lazy(() => import("@/components/sections/Skills"));
-const Education = lazy(() => import("@/components/sections/Education"));
-const Leadership = lazy(() => import("@/components/sections/Leadership"));
-const Certifications = lazy(() => import("@/components/sections/Certifications"));
-const Internships = lazy(() => import("@/components/sections/Internships"));
-const Portfolio = lazy(() => import("@/components/sections/Projects"));
-const Contact = lazy(() => import("@/components/sections/Contact"));
-const Quotes = lazy(() => import("@/components/sections/Quotes"));
-const Footer = lazy(() => import("@/components/layout/Footer"));
-
-// Loading fallback component
-const SectionLoader = () => (
-  <div className="w-full h-40 flex items-center justify-center">
-    <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
-  </div>
-);
+import About from "@/components/sections/About";
+import Skills from "@/components/sections/Skills";
+import Education from "@/components/sections/Education";
+import Leadership from "@/components/sections/Leadership";
+import Certifications from "@/components/sections/Certifications";
+import Internships from "@/components/sections/Internships";
+import Portfolio from "@/components/sections/Projects";
+import Contact from "@/components/sections/Contact";
+import Quotes from "@/components/sections/Quotes";
+import Footer from "@/components/layout/Footer";
 
 // This is the main Homepage file - it controls the entire portfolio website layout
 // It imports all the different sections and arranges them in order
@@ -43,43 +34,39 @@ export default function Home() {
 
       {/* Main content area with all portfolio sections */}
       <main>
-        {/* The banner and intro section with your photo - kept eager for LCP */}
+        {/* The banner and intro section with your photo */}
         <Hero />
 
-        <Suspense fallback={<SectionLoader />}>
-          {/* Information about you and your background */}
-          <About />
+        {/* Information about you and your background */}
+        <About />
 
-          {/* Your technical and design skills */}
-          <Skills />
+        {/* Your technical and design skills */}
+        <Skills />
 
-          {/* Your educational background */}
-          <Education />
+        {/* Your educational background */}
+        <Education />
 
-          {/* Your leadership experience */}
-          <Leadership />
+        {/* Your leadership experience */}
+        <Leadership />
 
-          {/* Your certifications */}
-          <Certifications />
+        {/* Your certifications */}
+        <Certifications />
 
-          {/* Your internships */}
-          <Internships />
+        {/* Your internships */}
+        <Internships />
 
-          {/* Your projects and portfolio items */}
-          <Portfolio />
+        {/* Your projects and portfolio items */}
+        <Portfolio />
 
-          {/* Quotes Section */}
-          <Quotes />
+        {/* Quotes Section */}
+        <Quotes />
 
-          {/* Contact form for people to reach you */}
-          <Contact />
-        </Suspense>
+        {/* Contact form for people to reach you */}
+        <Contact />
       </main>
 
       {/* Bottom footer with copyright and links */}
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+      <Footer />
     </motion.div>
   );
 }
