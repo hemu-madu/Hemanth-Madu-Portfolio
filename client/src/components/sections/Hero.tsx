@@ -131,7 +131,7 @@ export default function Hero() {
               <MagneticButton>
                 <button
                   className="btn-outline min-w-[160px]"
-                  onClick={() => window.open("/Hemanth_Madu_Resume.pdf", "_blank")}
+                  onClick={() => window.open(`${import.meta.env.BASE_URL}Hemanth_Madu_Resume.pdf`, "_blank")}
                 >
                   Download Resume
                 </button>
@@ -151,10 +151,12 @@ export default function Hero() {
               <div className="relative w-full h-full rounded-full p-2 bg-gradient-to-tr from-primary/50 to-transparent">
                 <div className="w-full h-full rounded-full overflow-hidden border-4 border-background bg-background relative z-10 shadow-2xl">
                   <img
-                    src="/hemanth-profile.png"
+                    src={`${import.meta.env.BASE_URL}hemanth-profile.png`}
                     alt="Hemanth Madu"
                     className="w-full h-full object-cover"
                     onError={(e) => {
+                      // Fallback just in case
+                      console.error("Image loading failed:", e.currentTarget.src);
                       e.currentTarget.src = "https://via.placeholder.com/400?text=HM";
                     }}
                   />

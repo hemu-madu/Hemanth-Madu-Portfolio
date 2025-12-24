@@ -106,6 +106,15 @@ export const leadership = [
   }
 ];
 
+// Helper to handle public assets with base path
+const getAssetPath = (path: string) => {
+  const base = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${base}${cleanPath}`;
+};
+
 // Internships
 export const internships = [
   {
@@ -115,7 +124,7 @@ export const internships = [
     description: "Developed modules using C and Python for embedded system applications. Learned industry practices in coding, debugging, and version control. Gained expertise in Embedded C, Python, OOP, Linked List, Linux, Microcontrollers, RTOS, Git, and GitHub.",
     iconBg: "#f0fdf4", // light green
     iconColor: "#10b981", // green
-    logo: "/bitsilica.jfif"
+    logo: getAssetPath("bitsilica.jfif")
   },
   {
     title: "CodeTantra Internship",
@@ -124,7 +133,7 @@ export const internships = [
     description: "Completed internship with a focus on web development. Developed a mini project on Interactive Quiz application, gaining practical experience in frontend and backend technologies.",
     iconBg: "#dbeafe", // light blue
     iconColor: "#3b82f6", // blue
-    logo: "/codetantra.jpg"
+    logo: getAssetPath("codetantra.jpg")
   },
   {
     title: "Cyber Security Virtual Internship",
@@ -133,7 +142,7 @@ export const internships = [
     description: "Gained hands-on experience in cybersecurity practices and tools, including threat detection, vulnerability assessment, and security implementation strategies.",
     iconBg: "#fee2e2", // light red
     iconColor: "#ef4444", // red
-    logo: "/eduskills.png"
+    logo: getAssetPath("eduskills.png")
   }
 ];
 
@@ -142,7 +151,7 @@ export const projects = [
   {
     title: "Web Cloud Data Storage System",
     description: "Architected a scalable cloud storage platform with CP-ABE (Ciphertext-Policy Attribute-Based Encryption) for enhanced data security. Implemented end-to-end encryption mechanism reducing unauthorized data access by 95%. Optimized multi-threaded request handling, improving system performance by 30%.",
-    image: "/images/web-cloud-project.svg",
+    image: getAssetPath("images/web-cloud-project.svg"),
     tags: ["Java (J2EE)", "JSP", "Servlets", "JavaScript", "MySQL"],
     demoUrl: "https://github.com/hemu-madu/WebCloud-Web-Based-Cloud-Storage-for-Secure-Data-Sharing-across-Platforms",
     githubUrl: "https://github.com/hemu-madu/WebCloud-Web-Based-Cloud-Storage-for-Secure-Data-Sharing-across-Platforms"
@@ -150,7 +159,7 @@ export const projects = [
   {
     title: "Interactive Quiz Application",
     description: "Engineered real-time quiz platform with dynamic scoring algorithm. Developed responsive backend reducing query response time by 40%. Implemented user engagement features increasing platform interaction by 30%. Utilized MongoDB for efficient data management and scalable architecture.",
-    image: "/images/quiz-app-project.svg",
+    image: getAssetPath("images/quiz-app-project.svg"),
     tags: ["Node.js", "Express.js", "MongoDB", "JavaScript"],
     demoUrl: "https://github.com/hemu-madu/Interactive-Quiz",
     githubUrl: "https://github.com/hemu-madu/Interactive-Quiz"
@@ -158,7 +167,7 @@ export const projects = [
   {
     title: "Portfolio Website",
     description: "A responsive portfolio website to showcase my skills, projects, education, and professional experience. Built with modern web technologies and responsive design principles to provide an optimal viewing experience across all devices.",
-    image: "/portfolio_v2.png",
+    image: getAssetPath("portfolio_v2.png"),
     tags: ["React", "Tailwind CSS", "TypeScript", "Framer Motion"],
     demoUrl: "https://github.com/hemu-madu/Hemanth-Madu-Portfolio",
     githubUrl: "https://github.com/hemu-madu/Hemanth-Madu-Portfolio"
