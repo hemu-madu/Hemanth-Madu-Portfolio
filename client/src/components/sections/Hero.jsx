@@ -137,7 +137,12 @@ function Hero() {
             <MagneticButton>
               <button
                 className="btn-outline min-w-[160px]"
-                onClick={() => window.open(`${import.meta.env.BASE_URL}Hemanth_Madu_Resume.pdf`, "_blank")}
+                onClick={() => {
+                  const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+                    ? import.meta.env.BASE_URL
+                    : `${import.meta.env.BASE_URL}/`;
+                  window.open(`${baseUrl}Hemanth_Madu_Resume.pdf`, "_blank");
+                }}
               >
                 Download Resume
               </button>
