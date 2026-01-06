@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Portfolio Website</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-portfolio">
+            <stop stop-color="#0F2027" offset="0%"></stop>
+            <stop stop-color="#203A43" offset="50%"></stop>
+            <stop stop-color="#2C5364" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="gradient-accent">
+            <stop stop-color="#FFC107" offset="0%"></stop>
+            <stop stop-color="#FF9800" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="PortfolioWebsite" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Background with gradient -->
+        <rect id="Background" fill="#1A1A2E" x="0" y="0" width="800" height="600"></rect>
+        
+        <!-- Grid pattern for tech feel -->
+        <g id="Grid" opacity="0.08" stroke="#FFFFFF" stroke-width="0.5">
+            <path d="M0,100 L800,100 M0,200 L800,200 M0,300 L800,300 M0,400 L800,400 M0,500 L800,500"></path>
+            <path d="M100,0 L100,600 M200,0 L200,600 M300,0 L300,600 M400,0 L400,600 M500,0 L500,600 M600,0 L600,600 M700,0 L700,600"></path>
+        </g>
+        
+        <!-- Browser window frame -->
+        <rect id="Browser-Frame" fill="url(#gradient-portfolio)" x="150" y="80" width="500" height="400" rx="8"></rect>
+        <rect id="Browser-Bar" fill="#24272E" x="150" y="80" width="500" height="30" rx="8 8 0 0"></rect>
+        <circle id="Close-Button" fill="#FF5F56" cx="170" cy="95" r="6"></circle>
+        <circle id="Minimize-Button" fill="#FFBD2E" cx="190" cy="95" r="6"></circle>
+        <circle id="Expand-Button" fill="#27C93F" cx="210" cy="95" r="6"></circle>
+        <rect id="URL-Bar" fill="#1A1A2E" x="230" y="85" width="370" height="20" rx="4"></rect>
+        <text id="URL-Text" font-family="Arial, Arial" font-size="10" fill="#8F9297" x="240" y="98">
+            https://hemanthmadu.com
+        </text>
+        
+        <!-- Website content -->
+        <rect id="Content-Area" fill="#FFFFFF" opacity="0.05" x="170" y="120" width="460" height="340"></rect>
+        
+        <!-- Website header -->
+        <rect id="Header" fill="#1A1A2E" opacity="0.8" x="170" y="120" width="460" height="60"></rect>
+        <text id="Logo" font-family="Arial-BoldMT, Arial" font-size="16" font-weight="bold" fill="#FFFFFF" x="190" y="155">
+            Hemanth Madu
+        </text>
+        <path id="NavMenu" d="M450,140 L470,140 M450,150 L470,150 M450,160 L470,160" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"></path>
+        
+        <!-- Hero section -->
+        <rect id="Hero" fill="url(#gradient-accent)" opacity="0.1" x="170" y="180" width="460" height="140"></rect>
+        <circle id="Profile-Pic" fill="#1A1A2E" cx="240" cy="250" r="40" stroke="#FFFFFF" stroke-width="2"></circle>
+        <text id="Hero-Title" font-family="Arial-BoldMT, Arial" font-size="20" font-weight="bold" fill="#FFFFFF" x="310" y="230">
+            Welcome to My Portfolio
+        </text>
+        <text id="Hero-Subtitle" font-family="Arial, Arial" font-size="12" fill="#FFFFFF" opacity="0.8" x="310" y="260">
+            Computer Science Graduate | Java Developer | Web Designer
+        </text>
+        <rect id="CTA-Button" fill="url(#gradient-accent)" x="310" y="280" width="100" height="30" rx="4"></rect>
+        <text id="CTA-Text" font-family="Arial-BoldMT, Arial" font-size="12" font-weight="bold" fill="#1A1A2E" text-anchor="middle" x="360" y="300">
+            Contact Me
+        </text>
+        
+        <!-- Portfolio grid -->
+        <rect id="Section-Title-BG" fill="#1A1A2E" opacity="0.8" x="170" y="340" width="460" height="30"></rect>
+        <text id="Section-Title" font-family="Arial-BoldMT, Arial" font-size="16" font-weight="bold" fill="#FFFFFF" x="310" y="360">
+            Projects
+        </text>
+        
+        <rect id="Project1" fill="#FFFFFF" opacity="0.1" x="190" y="390" width="130" height="100" rx="4"></rect>
+        <rect id="Project2" fill="#FFFFFF" opacity="0.1" x="335" y="390" width="130" height="100" rx="4"></rect>
+        <rect id="Project3" fill="#FFFFFF" opacity="0.1" x="480" y="390" width="130" height="100" rx="4"></rect>
+        
+        <!-- Decorative elements -->
+        <circle id="Decoration1" fill="#FFFFFF" opacity="0.05" cx="100" cy="150" r="30"></circle>
+        <circle id="Decoration2" fill="#FFFFFF" opacity="0.05" cx="700" cy="400" r="50"></circle>
+        <circle id="Decoration3" fill="#FFFFFF" opacity="0.05" cx="120" cy="450" r="20"></circle>
+        <circle id="Decoration4" fill="#FFFFFF" opacity="0.05" cx="680" cy="150" r="20"></circle>
+        
+        <!-- Title -->
+        <text id="Title" font-family="Arial-BoldMT, Arial" font-size="28" font-weight="bold" fill="#FFFFFF" text-anchor="middle" x="400" y="530">
+            Portfolio Website
+        </text>
+        <text id="Subtitle" font-family="Arial, Arial" font-size="18" fill="#FFFFFF" opacity="0.8" text-anchor="middle" x="400" y="560">
+            Responsive Design with Modern Technologies
+        </text>
+    </g>
+</svg>
