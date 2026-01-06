@@ -11,7 +11,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "db:push": "drizzle-kit push",
     "predeploy": "npm run build:client",
-    "deploy": "gh-pages - -d dist"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
