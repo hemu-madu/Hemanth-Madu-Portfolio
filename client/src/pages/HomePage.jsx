@@ -36,7 +36,6 @@ import {
   leadership,
   getAssetPath,
 } from "@/lib/data";
-import HeroTerminalVisual from "@/components/embedded/HeroTerminalVisual";
 import ArchitectureExplorer from "@/components/embedded/ArchitectureExplorer";
 import ProjectCard from "@/components/embedded/ProjectCard";
 import { useToast } from "@/hooks/use-toast";
@@ -137,162 +136,149 @@ export default function HomePage() {
         />
 
         <div className="page-container relative">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-            {/* Left Column: Positioning & CTAs */}
-            <div className="lg:col-span-7 flex flex-col items-start w-full">
-              {/* DP & Identity Block */}
-              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 sm:gap-6 mb-6 w-full text-center sm:text-left">
-                {/* Profile DP */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.45 }}
-                  className="relative group shrink-0"
-                >
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-3xl p-1 bg-gradient-to-tr from-primary via-cyan-400 to-accent shadow-xl shadow-primary/20 group-hover:shadow-primary/40 transition-all duration-300">
-                    <img
-                      src={getAssetPath("hemanth-profile.jpg")}
-                      alt="Hemanth Madu"
-                      className="w-full h-full object-cover rounded-[22px] transition-transform duration-300 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  <span className="absolute -bottom-1 -right-1 px-2.5 py-0.5 rounded-full bg-emerald-500 border-2 border-background text-[10px] font-mono font-bold text-white shadow-md flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
-                    ONLINE
-                  </span>
-                </motion.div>
-
-                {/* Name & Title */}
-                <div className="flex-1 min-w-0">
-                  {/* Telemetry Status Pill */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-primary/30 text-xs font-mono text-muted-foreground mb-3 shadow-sm"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-foreground font-semibold">STATUS:</span>
-                    <span>Ready for Embedded Linux &amp; Firmware Roles</span>
-                  </motion.div>
-
-                  {/* Candidate Name */}
-                  <motion.h1
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, delay: 0.06 }}
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground uppercase mb-1 font-heading break-words"
-                  >
-                    Hemanth <span className="gradient-text-cyan">Madu</span>
-                  </motion.h1>
-
-                  {/* Professional Title */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, delay: 0.1 }}
-                    className="text-lg sm:text-xl md:text-2xl font-bold text-foreground/90 tracking-tight font-heading mb-2"
-                  >
-                    Embedded Systems Engineer
-                  </motion.div>
-
-                  {/* Core Specialization Line */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.45, delay: 0.14 }}
-                    className="font-mono text-xs sm:text-sm text-primary font-semibold tracking-wide flex flex-wrap items-center justify-center sm:justify-start gap-2"
-                  >
-                    <span>Embedded Linux</span>
-                    <span className="text-muted-foreground/60">&bull;</span>
-                    <span>Linux Device Drivers</span>
-                    <span className="text-muted-foreground/60">&bull;</span>
-                    <span>Firmware Development</span>
-                    <span className="text-muted-foreground/60">&bull;</span>
-                    <span>FreeRTOS</span>
-                  </motion.div>
+          <div className="max-w-4xl mx-auto flex flex-col items-center sm:items-start w-full">
+            {/* DP & Identity Block */}
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 mb-6 w-full text-center sm:text-left">
+              {/* Profile DP */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.45 }}
+                className="relative group shrink-0"
+              >
+                <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-3xl p-1 bg-gradient-to-tr from-primary via-cyan-400 to-accent shadow-xl shadow-primary/20 group-hover:shadow-primary/40 transition-all duration-300">
+                  <img
+                    src={getAssetPath("hemanth-profile.jpg")}
+                    alt="Hemanth Madu"
+                    className="w-full h-full object-cover rounded-[22px] transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
                 </div>
-              </div>
-
-              {/* Concise Introduction */}
-              <motion.p
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.18 }}
-                className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-xl mb-8"
-              >
-                {personalInfo.tagline}
-              </motion.p>
-
-              {/* Primary Action Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.22 }}
-                className="flex flex-wrap items-center gap-3 mb-10 w-full sm:w-auto"
-              >
-                <a href="#projects" className="btn-primary font-mono text-xs">
-                  View My Projects
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-
-                <a
-                  href={resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline font-mono text-xs"
-                >
-                  <Download className="w-4 h-4 text-primary" />
-                  Download Resume
-                </a>
-
-                <a href="#contact" className="btn-ghost font-mono text-xs">
-                  Contact Me
-                </a>
-              </motion.div>
-
-              {/* Hardware / Code Attributes Strip */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.26 }}
-                className="flex flex-wrap items-center gap-4 text-xs font-mono text-muted-foreground pt-4 border-t border-border/80 w-full"
-              >
-                <a
-                  href={personalInfo.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
-                >
-                  <Github className="w-4 h-4 text-primary" />
-                  github.com/hemu-madu
-                </a>
-                <span className="text-border">|</span>
-                <a
-                  href={personalInfo.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
-                >
-                  <Linkedin className="w-4 h-4 text-primary" />
-                  LinkedIn
-                </a>
-                <span className="text-border">|</span>
-                <span className="inline-flex items-center gap-1 text-muted-foreground">
-                  <MapPin className="w-3.5 h-3.5 text-primary" />
-                  Hyderabad, IN
+                <span className="absolute -bottom-1 -right-1 px-2.5 py-0.5 rounded-full bg-emerald-500 border-2 border-background text-[10px] font-mono font-bold text-white shadow-md flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping" />
+                  ONLINE
                 </span>
               </motion.div>
+
+              {/* Name & Title */}
+              <div className="flex-1 min-w-0">
+                {/* Telemetry Status Pill */}
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-primary/30 text-xs font-mono text-muted-foreground mb-3 shadow-sm"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-foreground font-semibold">STATUS:</span>
+                  <span>Ready for Embedded Linux &amp; Firmware Roles</span>
+                </motion.div>
+
+                {/* Candidate Name */}
+                <motion.h1
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.06 }}
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-foreground uppercase mb-2 font-heading break-words"
+                >
+                  Hemanth <span className="gradient-text-cyan">Madu</span>
+                </motion.h1>
+
+                {/* Professional Title */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.1 }}
+                  className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground/90 tracking-tight font-heading mb-3"
+                >
+                  Embedded Systems Engineer
+                </motion.div>
+
+                {/* Core Specialization Line */}
+                <motion.div
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: 0.14 }}
+                  className="font-mono text-xs sm:text-sm text-primary font-semibold tracking-wide flex flex-wrap items-center justify-center sm:justify-start gap-2"
+                >
+                  <span>Embedded Linux</span>
+                  <span className="text-muted-foreground/60">&bull;</span>
+                  <span>Linux Device Drivers</span>
+                  <span className="text-muted-foreground/60">&bull;</span>
+                  <span>Firmware Development</span>
+                  <span className="text-muted-foreground/60">&bull;</span>
+                  <span>FreeRTOS</span>
+                </motion.div>
+              </div>
             </div>
 
-            {/* Right Column: Interactive Microcontroller Terminal Visualizer */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="lg:col-span-5 flex flex-col items-center"
+            {/* Concise Introduction */}
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.18 }}
+              className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-3xl mb-8 text-center sm:text-left"
             >
-              <HeroTerminalVisual />
+              {personalInfo.tagline}
+            </motion.p>
+
+            {/* Primary Action Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.22 }}
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mb-10 w-full"
+            >
+              <a href="#projects" className="btn-primary font-mono text-xs">
+                View My Projects
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline font-mono text-xs"
+              >
+                <Download className="w-4 h-4 text-primary" />
+                Download Resume
+              </a>
+
+              <a href="#contact" className="btn-ghost font-mono text-xs">
+                Contact Me
+              </a>
+            </motion.div>
+
+            {/* Hardware / Code Attributes Strip */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.26 }}
+              className="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs font-mono text-muted-foreground pt-4 border-t border-border/80 w-full"
+            >
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+              >
+                <Github className="w-4 h-4 text-primary" />
+                github.com/hemu-madu
+              </a>
+              <span className="text-border">|</span>
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-primary transition-colors"
+              >
+                <Linkedin className="w-4 h-4 text-primary" />
+                LinkedIn
+              </a>
+              <span className="text-border">|</span>
+              <span className="inline-flex items-center gap-1 text-muted-foreground">
+                <MapPin className="w-3.5 h-3.5 text-primary" />
+                Hyderabad, IN
+              </span>
             </motion.div>
           </div>
         </div>
