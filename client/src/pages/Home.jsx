@@ -1,93 +1,48 @@
 import { useEffect } from "react";
-import Navbar from "@/components/layout/Navbar";
-import Hero from "@/components/sections/Hero";
 import { motion } from "framer-motion";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skills from "@/components/sections/Skills";
+import Experience from "@/components/sections/Experience";
+import Projects from "@/components/sections/Projects";
 import Education from "@/components/sections/Education";
-import Leadership from "@/components/sections/Leadership";
 import Certifications from "@/components/sections/Certifications";
-import Internships from "@/components/sections/Internships";
-import Portfolio from "@/components/sections/Projects";
+import Leadership from "@/components/sections/Leadership";
 import Contact from "@/components/sections/Contact";
-import Quotes from "@/components/sections/Quotes";
-import Footer from "@/components/layout/Footer";
+import ScrollProgress from "@/components/ui/ScrollProgress";
+
 function Home() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  return <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.5 }}
-    className="min-h-screen flex flex-col"
-  >
-      {
-    /* Top navigation menu */
-  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen flex flex-col bg-background"
+    >
+      <ScrollProgress />
       <Navbar />
 
-      {
-    /* Main content area with all portfolio sections */
-  }
-      <main>
-        {
-    /* The banner and intro section with your photo */
-  }
+      <main id="main-content" className="flex-1">
         <Hero />
-
-        {
-    /* Information about you and your background */
-  }
         <About />
-
-        {
-    /* Your technical and design skills */
-  }
         <Skills />
-
-        {
-    /* Your educational background */
-  }
+        <Experience />
+        <Projects />
         <Education />
-
-        {
-    /* Your leadership experience */
-  }
-        <Leadership />
-
-        {
-    /* Your certifications */
-  }
         <Certifications />
-
-        {
-    /* Your internships */
-  }
-        <Internships />
-
-        {
-    /* Your projects and portfolio items */
-  }
-        <Portfolio />
-
-        {
-    /* Quotes Section */
-  }
-        <Quotes />
-
-        {
-    /* Contact form for people to reach you */
-  }
+        <Leadership />
         <Contact />
       </main>
 
-      {
-    /* Bottom footer with copyright and links */
-  }
       <Footer />
-    </motion.div>;
+    </motion.div>
+  );
 }
-export {
-  Home as default
-};
+
+export default Home;

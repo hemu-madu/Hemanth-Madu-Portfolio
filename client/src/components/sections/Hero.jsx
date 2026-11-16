@@ -1,244 +1,317 @@
 import { motion } from "framer-motion";
-import { ChevronDown, Code, Database, Cpu } from "lucide-react";
+import { ArrowRight, Download, ChevronDown, Github, Linkedin, Mail } from "lucide-react";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
-import { ClayFloatingShapes } from "@/components/ui/clay-floating-shapes";
-import MagneticButton from "@/components/ui/MagneticButton";
+import { personalInfo } from "@/lib/data";
+
+const socialLinks = [
+  { href: personalInfo.github, icon: Github, label: "GitHub" },
+  { href: personalInfo.linkedin, icon: Linkedin, label: "LinkedIn" },
+  { href: `mailto:${personalInfo.email}`, icon: Mail, label: "Email" },
+];
+
+const techBadges = [
+  "Embedded C",
+  "Linux BSP",
+  "Device Drivers",
+  "RTOS",
+  "Python",
+  "React",
+];
+
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const y = el.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+}
+
 function Hero() {
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: "smooth"
-      });
-    }
-  };
-  const { displayedText } = useTypingEffect("Computer Science Engineer & Full Stack Developer", 50, 1e3);
-  return <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
-    {
-      /* Tech Background Effects */
-    }
-    <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-      <ClayFloatingShapes />
+  const { displayedText } = useTypingEffect(personalInfo.roles, 60, 800, true);
 
-      {
-        /* Grid Pattern (Subtler) */
-      }
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
+  const resumeUrl = (() => {
+    const base = import.meta.env.BASE_URL.endsWith("/")
+      ? import.meta.env.BASE_URL
+      : `${import.meta.env.BASE_URL}/`;
+    return `${base}Hemanth_Madu_Resume.pdf`;
+  })();
 
-      {
-        /* Glow Effects (Kept for ambiance but softer) */
-      }
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-primary/10 rounded-full blur-[80px] opacity-30 will-change-transform" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-blue-600/5 rounded-full blur-[60px] opacity-20 will-change-transform" />
+  return (
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center overflow-hidden bg-background"
+    >
+      {/* Ambient background */}
+      <div
+        className="absolute inset-0 bg-mesh pointer-events-none"
+        aria-hidden="true"
+      />
 
-      {
-        /* Floating Coding Symbols */
-      }
-      <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-[10%] text-6xl font-mono font-bold text-primary/10 select-none z-0 will-change-transform"
-      >
-        {"<Code />"}
-      </motion.div>
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 bg-grid opacity-30 dark:opacity-20 pointer-events-none"
+        aria-hidden="true"
+      />
 
-      <motion.div
-        animate={{ scale: [1, 1.1, 1], opacity: [0.05, 0.1, 0.05] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-1/4 right-[5%] text-8xl font-mono font-bold text-blue-500/10 select-none z-0 will-change-transform"
-      >
-        {"{ }"}
-      </motion.div>
+      {/* Top glow */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 0%, hsl(var(--primary)/0.12) 0%, transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
 
-      {
-        /* Floating Tech Icons */
-      }
-      <motion.div
-        animate={{ y: [0, -20, 0], opacity: [0.1, 0.3, 0.1] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 will-change-transform"
-      >
-        <Code className="w-24 h-24 text-primary/20" />
-      </motion.div>
+      <div className="section-container relative z-10 w-full pt-24 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[calc(100vh-120px)]">
+          {/* Left — Text Content */}
+          <div className="flex flex-col items-start">
+            {/* Status badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-6"
+            >
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-primary/80 border border-primary/20 bg-primary/5 rounded-full px-4 py-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                Open to Opportunities
+              </span>
+            </motion.div>
 
-      <motion.div
-        animate={{ y: [0, 20, 0], opacity: [0.1, 0.2, 0.1] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-1/3 right-1/4 will-change-transform"
-      >
-        <Database className="w-32 h-32 text-blue-400/10" />
-      </motion.div>
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 text-balance"
+            >
+              Hemanth{" "}
+              <span className="gradient-text">Madu</span>
+            </motion.h1>
 
-      <motion.div
-        animate={{ rotate: [0, 360], opacity: [0.1, 0.2, 0.1] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-        className="absolute top-1/3 right-10 will-change-transform"
-      >
-        <Cpu className="w-16 h-16 text-cyan-400/20" />
-      </motion.div>
-    </div>
+            {/* Typing effect role */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex items-center gap-2 mb-6 h-8"
+            >
+              <span className="text-lg md:text-xl font-medium text-muted-foreground">
+                {displayedText}
+              </span>
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="inline-block w-0.5 h-5 bg-primary rounded-full"
+              />
+            </motion.div>
 
-    <div className="container-custom relative z-10 w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center min-h-[calc(100vh-100px)]">
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8 max-w-lg text-pretty"
+            >
+              {personalInfo.tagline}
+            </motion.p>
 
-        {
-          /* Left Column: Text Content */
-        }
-        <div className="flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
-          <motion.h1
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
-          >
-            Hello, I'm <br />
-            <span className="text-gradient-primary">Hemanth Madu</span>
-          </motion.h1>
+            {/* Tech badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-wrap gap-2 mb-10"
+            >
+              {techBadges.map((badge) => (
+                <span key={badge} className="tech-badge">
+                  {badge}
+                </span>
+              ))}
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="text-xl md:text-2xl text-muted-foreground font-medium mb-6 min-h-[32px]"
-          >
-            <span className="text-gradient-secondary">{displayedText}</span>
-            <motion.span
-              animate={{ opacity: [0, 1, 0] }}
-              transition={{ duration: 0.8, repeat: Infinity }}
-              className="inline-block w-0.5 h-6 ml-1 bg-primary align-middle"
-            />
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-lg text-muted-foreground/80 leading-relaxed mb-8 max-w-lg"
-          >
-            Passionate about building efficient, scalable, and innovative software solutions.
-            Specializing in modern web technologies, embedded systems, and system architecture.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
-          >
-            <MagneticButton>
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-3 mb-10 w-full sm:w-auto"
+            >
               <button
-                className="btn-clay min-w-[160px]"
-                onClick={() => scrollToSection("portfolio")}
+                onClick={() => scrollTo("projects")}
+                className="btn-primary"
               >
-                View My Work
+                View Projects
+                <ArrowRight className="w-4 h-4" />
               </button>
-            </MagneticButton>
-            <MagneticButton>
-              <button
-                className="btn-outline min-w-[160px]"
-                onClick={() => {
-                  const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-                    ? import.meta.env.BASE_URL
-                    : `${import.meta.env.BASE_URL}/`;
-                  window.open(`${baseUrl}Hemanth_Madu_Resume.pdf`, "_blank");
-                }}
+
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
               >
+                <Download className="w-4 h-4" />
                 Download Resume
+              </a>
+
+              <button
+                onClick={() => scrollTo("contact")}
+                className="btn-ghost"
+              >
+                Contact Me
               </button>
-            </MagneticButton>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex items-center gap-3"
+            >
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto") ? undefined : "_blank"}
+                  rel={
+                    href.startsWith("mailto") ? undefined : "noopener noreferrer"
+                  }
+                  aria-label={label}
+                  className="w-10 h-10 rounded-lg bg-muted border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 hover:bg-primary/5 transition-all duration-200"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+              <div className="w-px h-5 bg-border mx-1" aria-hidden="true" />
+              <span className="text-xs text-muted-foreground font-mono">
+                hemanthmadu6454@gmail.com
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Right — Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex justify-center lg:justify-end order-first lg:order-last"
+          >
+            <div className="relative">
+              {/* Glow */}
+              <div
+                className="absolute inset-0 rounded-2xl blur-3xl opacity-20 animate-pulse-glow"
+                style={{
+                  background:
+                    "radial-gradient(circle, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%)",
+                }}
+                aria-hidden="true"
+              />
+
+              {/* Profile image container */}
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                {/* Decorative border ring */}
+                <div
+                  className="absolute inset-0 rounded-2xl"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, hsl(var(--primary)/0.4), hsl(var(--accent)/0.2))",
+                    padding: "2px",
+                    borderRadius: "1rem",
+                  }}
+                  aria-hidden="true"
+                >
+                  <div className="w-full h-full rounded-2xl bg-background" />
+                </div>
+
+                {/* Profile image */}
+                <div className="absolute inset-[2px] rounded-2xl overflow-hidden">
+                  <img
+                    src={`${
+                      import.meta.env.BASE_URL.endsWith("/")
+                        ? import.meta.env.BASE_URL
+                        : `${import.meta.env.BASE_URL}/`
+                    }hemanth-profile.png`}
+                    alt="Hemanth Madu — Embedded Linux Engineer"
+                    className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchpriority="high"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                </div>
+
+                {/* Floating code label */}
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-4 -left-4 glass rounded-xl px-4 py-2.5 shadow-glass-md border border-border/60"
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1" aria-hidden="true">
+                      <div className="w-2 h-2 rounded-full bg-red-400" />
+                      <div className="w-2 h-2 rounded-full bg-yellow-400" />
+                      <div className="w-2 h-2 rounded-full bg-green-400" />
+                    </div>
+                    <code className="text-xs font-mono text-muted-foreground">
+                      <span className="text-cyan-500">gcc</span>{" "}
+                      <span className="text-green-500">-o</span> firmware.elf
+                    </code>
+                  </div>
+                </motion.div>
+
+                {/* Floating Linux label */}
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }}
+                  className="absolute -top-4 -right-4 glass rounded-xl px-4 py-2.5 shadow-glass-md border border-border/60"
+                >
+                  <div className="flex items-center gap-2">
+                    <i className="devicon-linux-plain text-lg text-orange-500" aria-hidden="true" />
+                    <span className="text-xs font-semibold text-foreground">
+                      Linux BSP
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
         </div>
 
-        {
-          /* Right Column: Profile Image */
-        }
+        {/* Scroll indicator */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center md:justify-end order-1 md:order-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 0.6 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-1 cursor-pointer group"
+          onClick={() => scrollTo("about")}
+          role="button"
+          aria-label="Scroll to about section"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === "Enter" && scrollTo("about")}
         >
-          <div className="relative w-64 h-64 md:w-96 md:h-96">
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary to-blue-400 rounded-full opacity-20 blur-2xl animate-pulse" />
-            <div className="relative w-full h-full rounded-full p-2 bg-gradient-to-tr from-primary/50 to-transparent">
-              <div className="w-full h-full rounded-full overflow-hidden border-4 border-background bg-background relative z-10 shadow-2xl">
-                <img
-                  src={`${import.meta.env.BASE_URL}hemanth-profile.png`}
-                  alt="Hemanth Madu"
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                  fetchpriority="high"
-                  onError={(e) => {
-                    console.error("Image loading failed:", e.currentTarget.src);
-                    e.currentTarget.src = "https://via.placeholder.com/400?text=HM";
-                  }}
-                />
-              </div>
-            </div>
-
-            {
-              /* Decorative Orbiting Element */
-            }
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-[-10px] rounded-full border border-primary/20 border-dashed z-0 will-change-transform"
-            />
-
-            {
-              /* Floating Emojis */
-            }
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -right-4 text-4xl z-20 drop-shadow-lg will-change-transform"
-            >
-              🚀
-            </motion.div>
-
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-10 -left-6 text-4xl z-20 drop-shadow-lg will-change-transform"
-            >
-              💻
-            </motion.div>
-
-            <motion.div
-              animate={{ scale: [1, 1.2, 1], rotate: [0, 15, -15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-              className="absolute top-10 -left-2 text-3xl z-20 drop-shadow-lg will-change-transform"
-            >
-              ✨
-            </motion.div>
-          </div>
+          <span className="text-[10px] tracking-widest uppercase text-muted-foreground/60 group-hover:text-muted-foreground transition-colors">
+            Scroll
+          </span>
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="w-4 h-4 text-muted-foreground/60 group-hover:text-primary transition-colors" />
+          </motion.div>
         </motion.div>
-
       </div>
-    </div>
-
-    {
-      /* Scroll Indicator */
-    }
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1.5, duration: 0.8 }}
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 hidden md:block"
-    >
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="flex flex-col items-center cursor-pointer opacity-70 hover:opacity-100 transition-opacity"
-        onClick={() => scrollToSection("about")}
-      >
-        <span className="text-sm text-muted-foreground mb-2 tracking-widest uppercase text-xs">Scroll</span>
-        <ChevronDown className="w-6 h-6 text-primary" />
-      </motion.div>
-    </motion.div>
-  </section>;
+    </section>
+  );
 }
-export {
-  Hero as default
-};
+
+export default Hero;

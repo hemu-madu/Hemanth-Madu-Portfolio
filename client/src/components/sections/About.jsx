@@ -1,195 +1,180 @@
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Globe, Linkedin, Award, User, Heart, Sparkles } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { personalInfo } from "@/lib/data";
+
+const contactDetails = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: personalInfo.email,
+    href: `mailto:${personalInfo.email}`,
+    color: "text-indigo-500",
+    bg: "bg-indigo-50 dark:bg-indigo-900/20",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: personalInfo.phone,
+    href: `tel:${personalInfo.phone.replace(/\s/g, "")}`,
+    color: "text-green-500",
+    bg: "bg-green-50 dark:bg-green-900/20",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: personalInfo.location,
+    href: "https://maps.app.goo.gl/uazX4YtAJDKZWLP26",
+    target: "_blank",
+    color: "text-orange-500",
+    bg: "bg-orange-50 dark:bg-orange-900/20",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/hemu-madu",
+    href: personalInfo.github,
+    target: "_blank",
+    color: "text-foreground",
+    bg: "bg-muted",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/hemanth-madu",
+    href: personalInfo.linkedin,
+    target: "_blank",
+    color: "text-blue-500",
+    bg: "bg-blue-50 dark:bg-blue-900/20",
+  },
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 function About() {
-  return <section id="about" className="py-20 bg-muted/30 relative overflow-hidden">
-      {
-    /* Floating Background Elements */
-  }
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+  return (
+    <section id="about" className="section-padding section-bg-alt">
+      <div className="section-container">
+        {/* Heading */}
         <motion.div
-    animate={{ y: [0, -15, 0], opacity: [0.1, 0.3, 0.1] }}
-    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-    className="absolute top-20 right-[10%] text-primary/10"
-  >
-          <User className="w-24 h-24" />
-        </motion.div>
-
-        <motion.div
-    animate={{ scale: [1, 1.2, 1], rotate: [0, 10, -10, 0] }}
-    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-    className="absolute bottom-20 left-[5%] text-coral-500/10"
-  >
-          <Heart className="w-16 h-16" />
-        </motion.div>
-
-        <motion.div
-    animate={{ rotate: 360, opacity: [0.1, 0.2, 0.1] }}
-    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-    className="absolute top-1/2 left-[50%] -translate-x-1/2 -translate-y-1/2"
-  >
-          <Sparkles className="w-[500px] h-[500px] text-yellow-500/5 opacity-5" />
-        </motion.div>
-      </div>
-      <div className="container-custom">
-        <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.8 }}
-    className="text-center mb-16"
-  >
-          <h2 className="mb-4">
-            About <span className="text-gradient-primary">Me</span>
-          </h2>
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-14 max-w-2xl"
+        >
+          <span className="section-label">
+            <span className="w-5 h-px bg-primary rounded-full" />
+            About Me
+          </span>
+          <h2 className="section-title">Who I Am</h2>
           <div className="section-divider" />
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Get to know more about my background, skills, and passion for technology
-          </p>
         </motion.div>
 
-        <div className="responsive-grid cols-2 items-center">
-          {
-    /* Left Content */
-  }
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
+          {/* Bio — wider column */}
           <motion.div
-    initial={{ opacity: 0, x: -30 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.8 }}
-    className="space-y-6"
-  >
-            <div className="modern-card p-8 bg-card border-border">
-              <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-blue-500 rounded-xl flex items-center justify-center mr-4">
-                  <Award className="w-6 h-6 text-white" />
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-3 space-y-6"
+          >
+            <div className="glass-card p-8">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <i className="devicon-linux-plain text-2xl text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">Professional Summary</h3>
-                  <p className="text-muted-foreground">Computer Science Engineer</p>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    Computer Science Engineer
+                  </h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    B.Tech CSE — PACE Institute of Technology &amp; Sciences
+                  </p>
                 </div>
               </div>
 
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Results-driven Computer Science graduate with a strong foundation in software development and a passion for creating scalable, user-centric solutions. Experienced in full-stack development, I leverage extensive knowledge in data structures, algorithms, and modern web technologies to build efficient applications.
+              <p className="text-muted-foreground leading-relaxed mb-5">
+                {personalInfo.about}
               </p>
 
               <p className="text-muted-foreground leading-relaxed">
-                I thrive in collaborative environments where innovation and technical excellence are valued. With a proactive approach to problem-solving and a commitment to continuous learning, I am dedicated to delivering high-quality software that optimizes business processes and enhances user experiences.
+                I bring together a deep interest in hardware-level programming with strong
+                software engineering fundamentals. My experience spans developing firmware
+                modules in Embedded C, working with RTOS, debugging serial communication
+                protocols, and building full-stack web applications. I value clean,
+                maintainable code and collaborative engineering teams.
               </p>
             </div>
 
-
+            {/* Quick facts */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { label: "CGPA", value: "8.63 / 10", sub: "B.Tech CSE" },
+                { label: "Current Role", value: "Embedded Intern", sub: "Bitsilica" },
+                { label: "Leadership", value: "4 Years", sub: "ACM Chair" },
+                { label: "Graduation", value: "May 2025", sub: "B.Tech" },
+              ].map(({ label, value, sub }) => (
+                <div key={label} className="glass-card p-5 text-center">
+                  <div className="stat-number text-2xl mb-1">{value}</div>
+                  <div className="text-xs font-medium text-foreground">{label}</div>
+                  <div className="text-xs text-muted-foreground">{sub}</div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
-          {
-    /* Right Content - Contact Info */
-  }
+          {/* Contact Info — narrower column */}
           <motion.div
-    initial={{ opacity: 0, x: 30 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-  >
-            <div className="modern-card p-8 bg-card border-border">
-              <h3 className="text-xl font-semibold mb-6 text-foreground">Contact Information</h3>
-
-              <div className="space-y-6">
-                <motion.div
-    whileHover={{ x: 5 }}
-    className="flex items-center p-4 bg-background border border-border/50 rounded-xl transition-colors hover:bg-teal-50/10 hover:border-teal-500/30 group cursor-pointer"
-  >
-                  <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-blue-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform shadow-sm">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Location</p>
-                    <a
-    href="https://maps.app.goo.gl/uazX4YtAJDKZWLP26"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-muted-foreground hover:text-primary transition-colors block"
-  >
-                      Eluru, A.P, India
-                    </a>
-                  </div>
-                </motion.div>
-
-                <motion.div
-    whileHover={{ x: 5 }}
-    className="flex items-center p-4 bg-background border border-border/50 rounded-xl transition-colors hover:bg-coral-50/10 hover:border-coral-500/30 group cursor-pointer"
-  >
-                  <div className="w-10 h-10 bg-gradient-to-br from-coral-400 to-orange-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform shadow-sm">
-                    <Mail className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Email</p>
-                    <a href="mailto:hemanthmadu6454@gmail.com" className="text-muted-foreground hover:text-coral-500 transition-colors block">
-                      hemanthmadu6454@gmail.com
-                    </a>
-                  </div>
-                </motion.div>
-
-                <motion.div
-    whileHover={{ x: 5 }}
-    className="flex items-center p-4 bg-background border border-border/50 rounded-xl transition-colors hover:bg-blue-50/10 hover:border-blue-500/30 group cursor-pointer"
-  >
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform shadow-sm">
-                    <Phone className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Phone</p>
-                    <a href="tel:+919491142102" className="text-muted-foreground hover:text-blue-500 transition-colors block">
-                      +91 9491142102
-                    </a>
-                  </div>
-                </motion.div>
-
-                <motion.div
-    whileHover={{ x: 5 }}
-    className="flex items-center p-4 bg-background border border-border/50 rounded-xl transition-colors hover:bg-yellow-50/10 hover:border-yellow-500/30 group cursor-pointer"
-  >
-                  <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform shadow-sm">
-                    <Globe className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">GitHub</p>
-                    <a
-    href="https://github.com/hemu-madu"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-muted-foreground hover:text-yellow-600 transition-colors block"
-  >
-                      github.com/hemu-madu
-                    </a>
-                  </div>
-                </motion.div>
-
-                <motion.div
-    whileHover={{ x: 5 }}
-    className="flex items-center p-4 bg-background border border-border/50 rounded-xl transition-colors hover:bg-blue-50/10 hover:border-blue-500/30 group cursor-pointer"
-  >
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center mr-4 group-hover:scale-110 transition-transform shadow-sm">
-                    <Linkedin className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">LinkedIn</p>
-                    <a
-    href="https://www.linkedin.com/in/hemanth-madu"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-muted-foreground hover:text-blue-600 transition-colors block"
-  >
-                      linkedin.com/in/hemanth-madu
-                    </a>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="lg:col-span-2 space-y-3"
+          >
+            <h3 className="text-sm font-semibold text-foreground mb-4 uppercase tracking-widest">
+              Contact Information
+            </h3>
+            {contactDetails.map(({ icon: Icon, label, value, href, target, color, bg }) => (
+              <motion.a
+                key={label}
+                variants={item}
+                href={href}
+                target={target}
+                rel={target === "_blank" ? "noopener noreferrer" : undefined}
+                className="flex items-center gap-4 p-4 glass-card group cursor-pointer"
+              >
+                <div
+                  className={`w-10 h-10 rounded-lg ${bg} flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform`}
+                >
+                  <Icon className={`w-4 h-4 ${color}`} />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-muted-foreground mb-0.5">
+                    {label}
+                  </p>
+                  <p className="text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                    {value}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
           </motion.div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }
-export {
-  About as default
-};
+
+export default About;

@@ -1,167 +1,153 @@
-import { motion } from "framer-motion";
-import { FaLinkedinIn, FaGithub, FaEnvelope } from "react-icons/fa";
-import { Heart, ArrowUp } from "lucide-react";
-function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-  return <footer className="bg-neu-light dark:bg-neu-dark text-foreground relative overflow-hidden border-t border-white/20 dark:border-white/5 transition-colors duration-300">
-      {
-    /* Background Pattern */
-  }
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-gradient-to-br from-coral-400 to-yellow-400 rounded-full blur-3xl" />
-      </div>
+import { Link } from "wouter";
+import { Github, Linkedin, Mail, ArrowUpRight, Cpu, Terminal, ShieldCheck } from "lucide-react";
+import { personalInfo, getAssetPath } from "@/lib/data";
 
-      <div className="container-custom py-12 relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {
-    /* Brand Section */
-  }
-          <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-  >
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold">
-                <span className="text-primary">Hemanth</span>
-                <span className="text-gradient-coral">Madu</span>
-              </h3>
-              <p className="text-muted-foreground mt-2">Computer Science Engineer (B.Tech)</p>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Building innovative software solutions with passion and precision.
-              Always ready to take on new challenges and create impactful applications.
+const quickLinks = [
+  { href: "#about", label: "About Overview" },
+  { href: "#skills", label: "9-Domain Technical Stack" },
+  { href: "#experience", label: "Bitsilica Experience" },
+  { href: "#projects", label: "Embedded Linux & RTOS Projects" },
+  { href: "#architecture", label: "Hardware & Driver Architecture" },
+  { href: "#education", label: "Education & ACM Leadership" },
+  { href: "#contact", label: "Contact & Terminal" },
+];
+
+const socialLinks = [
+  { href: personalInfo.github, icon: Github, label: "GitHub" },
+  { href: personalInfo.linkedin, icon: Linkedin, label: "LinkedIn" },
+  { href: `mailto:${personalInfo.email}`, icon: Mail, label: "Email" },
+];
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+  const resumeUrl = getAssetPath("Hemanth_Madu_Resume.pdf");
+
+  return (
+    <footer className="border-t border-border/80 bg-surface/60 relative overflow-hidden">
+      {/* Subtle PCB dot pattern */}
+      <div className="absolute inset-0 bg-pcb-grid opacity-30 pointer-events-none" aria-hidden="true" />
+
+      <div className="page-container relative py-14">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
+          {/* Engineering Identity */}
+          <div className="md:col-span-5 space-y-4">
+            <Link href="/">
+              <span className="inline-flex items-center gap-3 cursor-pointer group">
+                <span className="w-10 h-10 rounded-xl bg-chip-dark border border-primary/40 flex items-center justify-center shrink-0 shadow-sm">
+                  <svg viewBox="0 0 512 512" className="w-6 h-6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="footer-h-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#38bdf8" />
+                        <stop offset="100%" stopColor="#3b82f6" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M140 380V132h50v98h132v-98h50v248h-50v-98H190v98h-50z" fill="url(#footer-h-grad)" />
+                  </svg>
+                </span>
+                <span className="font-bold text-foreground text-base tracking-tight font-heading">
+                  Hemanth Madu
+                </span>
+              </span>
+            </Link>
+
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+              Embedded Systems Engineer specializing in low-level firmware, FreeRTOS multi-tasking, Linux Device Drivers, and Linux Kernel space integration.
             </p>
-          </motion.div>
 
-          {
-    /* Quick Links */
-  }
-          <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: 0.2 }}
-    className="text-center"
-  >
-            <h4 className="text-lg font-semibold mb-4 text-foreground">Quick Links</h4>
-            <div className="space-y-2">
-              {[
-    { href: "#about", label: "About" },
-    { href: "#skills", label: "Skills" },
-    { href: "#portfolio", label: "Portfolio" },
-    { href: "#contact", label: "Contact" }
-  ].map((link) => <div key={link.href}>
+            <div className="flex flex-col sm:flex-row gap-2 pt-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface border border-border text-xs font-mono text-muted-foreground">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                STM32 &bull; LPC2148 &bull; Linux 6.x
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-border text-xs font-mono text-primary">
+                <Terminal className="w-3.5 h-3.5" />
+                Hyderabad, IN
+              </div>
+            </div>
+          </div>
+
+          {/* Architecture / Quick Nav */}
+          <div className="md:col-span-4">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary mb-4 flex items-center gap-2">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              Technical Navigation
+            </p>
+            <ul className="grid grid-cols-1 gap-2.5">
+              {quickLinks.map(({ href, label }) => (
+                <li key={href}>
                   <a
-    href={link.href}
-    onClick={(e) => {
-      e.preventDefault();
-      const element = document.getElementById(link.href.substring(1));
-      element?.scrollIntoView({ behavior: "smooth" });
-    }}
-    className="block text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
-  >
-                    {link.label}
+                    href={href}
+                    className="font-mono text-xs text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 group"
+                  >
+                    <span className="text-primary/60 group-hover:text-primary transition-colors">&gt;</span>
+                    {label}
                   </a>
-                </div>)}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Direct Communication & Resume */}
+          <div className="md:col-span-3 space-y-4">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary mb-4">
+              Direct Contact
+            </p>
+            <ul className="space-y-3 font-mono text-xs">
+              {socialLinks.map(({ href, icon: Icon, label }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target={href.startsWith("mailto") ? undefined : "_blank"}
+                    rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                    className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                  >
+                    <Icon className="w-4 h-4 text-primary" />
+                    <span>{label}</span>
+                    {!href.startsWith("mailto") && (
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                    )}
+                  </a>
+                </li>
+              ))}
+              <li className="pt-1">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="text-muted-foreground hover:text-primary transition-colors break-all"
+                >
+                  {personalInfo.email}
+                </a>
+              </li>
+            </ul>
+
+            <div className="pt-2">
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline w-full justify-center font-mono text-xs py-2"
+              >
+                Download Resume.pdf
+              </a>
             </div>
-          </motion.div>
-
-          {
-    /* Contact & Social */
-  }
-          <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: 0.4 }}
-  >
-            <h4 className="text-lg font-semibold mb-4 text-foreground">Get In Touch</h4>
-            <div className="space-y-2 mb-6">
-              <p className="text-muted-foreground text-sm">hemanthmadu6454@gmail.com</p>
-              <p className="text-muted-foreground text-sm">+91 9491142102</p>
-              <p className="text-muted-foreground text-sm">Eluru, A.P, India</p>
-            </div>
-
-            <div className="flex space-x-4">
-              <motion.a
-    href="https://www.linkedin.com/in/hemanth-madu"
-    target="_blank"
-    rel="noopener noreferrer"
-    whileHover={{ scale: 1.1, y: -2 }}
-    className="p-3 rounded-full bg-neu-light dark:bg-neu-dark shadow-neumorph-sm dark:shadow-neumorph-dark-sm hover:shadow-neumorph dark:hover:shadow-neumorph-dark transition-all duration-300 text-primary border border-white/20 dark:border-white/5 items-center justify-center flex"
-  >
-                <FaLinkedinIn size={18} />
-              </motion.a>
-
-              <motion.a
-    href="https://github.com/hemu-madu"
-    target="_blank"
-    rel="noopener noreferrer"
-    whileHover={{ scale: 1.1, y: -2 }}
-    className="p-3 rounded-full bg-neu-light dark:bg-neu-dark shadow-neumorph-sm dark:shadow-neumorph-dark-sm hover:shadow-neumorph dark:hover:shadow-neumorph-dark transition-all duration-300 text-primary border border-white/20 dark:border-white/5 items-center justify-center flex"
-  >
-                <FaGithub size={18} />
-              </motion.a>
-
-              <motion.a
-    href="mailto:hemanthmadu6454@gmail.com"
-    target="_blank"
-    rel="noopener noreferrer"
-    whileHover={{ scale: 1.1, y: -2 }}
-    className="p-3 rounded-full bg-neu-light dark:bg-neu-dark shadow-neumorph-sm dark:shadow-neumorph-dark-sm hover:shadow-neumorph dark:hover:shadow-neumorph-dark transition-all duration-300 text-primary border border-white/20 dark:border-white/5 items-center justify-center flex"
-  >
-                <FaEnvelope size={18} />
-              </motion.a>
-            </div>
-          </motion.div>
+          </div>
         </div>
 
-        {
-    /* Bottom Section */
-  }
-        <div className="border-t border-white/10 dark:border-white/5 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <motion.p
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: 0.6 }}
-    className="text-muted-foreground text-sm mb-4 md:mb-0 flex items-center"
-  >
-              © {(/* @__PURE__ */ new Date()).getFullYear()} Hemanth Madu. Made with
-              <Heart className="w-4 h-4 text-red-500 mx-1 fill-current" />
-              All rights reserved.
-            </motion.p>
-
-            <motion.button
-    onClick={scrollToTop}
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.95 }}
-    className="w-10 h-10 bg-neu-light dark:bg-neu-dark text-primary shadow-neumorph-sm dark:shadow-neumorph-dark-sm active:shadow-neumorph-pressed dark:active:shadow-neumorph-pressed-dark rounded-full flex items-center justify-center transition-all duration-300 group border border-white/20 dark:border-white/5"
-  >
-              <ArrowUp className="w-5 h-5 group-hover:animate-bounce" />
-            </motion.button>
+        {/* Bottom Hardware Telemetry Bar */}
+        <div className="border-t border-border/80 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <span>&copy; {year} Hemanth Madu.</span>
+            <span className="text-primary/40">&bull;</span>
+            <span>All rights reserved.</span>
+          </div>
+          <div className="flex items-center gap-2 text-[11px] text-muted-foreground/80">
+            <span>RAM: 0x20000000</span>
+            <span className="text-border">|</span>
+            <span>FLASH: 0x08000000</span>
+            <span className="text-border">|</span>
+            <span className="text-primary">Built for Embedded Systems</span>
           </div>
         </div>
       </div>
-
-      {
-    /* Massive Name Footer */
-  }
-      <div className="w-full overflow-hidden pt-10 pb-5 select-none pointer-events-none">
-        <h1
-    className="text-[12vw] font-black leading-none text-center whitespace-pre tracking-tighter text-foreground/80 dark:text-foreground/80"
-  >
-          Hemanth   Madu
-        </h1>
-      </div>
-    </footer>;
+    </footer>
+  );
 }
-export {
-  Footer as default
-};
