@@ -18,7 +18,7 @@ import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
 import { personalInfo, getAssetPath } from "@/lib/data";
 
-const EMAILJS_SERVICE_ID = "service_l2kzfr9";
+const EMAILJS_SERVICE_ID = "service_i8t4avp";
 const EMAILJS_TEMPLATE_ID = "template_84mfy7j";
 const EMAILJS_PUBLIC_KEY = "RRH4Jf0jkFJJvwO-Y";
 
