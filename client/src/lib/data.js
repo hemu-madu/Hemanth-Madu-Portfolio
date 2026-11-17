@@ -2,7 +2,7 @@ import paceLogo from "@/assets/pace_autonomous_logo.jpg";
 import srichaitanyaLogo from "@/assets/srichaitanya_college_logo.jpg";
 import sreeBharathiLogo from "@/assets/sree_bharathi_high_school_logo.jpg";
 import acmLogo from "@/assets/acm_student_chapter_logo.jpg";
-import bitsilicaLogo from "@/assets/bitsilica_logo.jpg";
+import bitsilicaLogo from "@/assets/bitsilica_logo.png";
 
 // Helper: resolve base URL for public assets
 export const getAssetPath = (path) => {

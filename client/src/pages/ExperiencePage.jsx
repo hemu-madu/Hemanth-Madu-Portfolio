@@ -31,11 +31,11 @@ export default function ExperiencePage() {
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-6 border-b border-border mb-6">
                 <div className="flex items-start gap-4">
                   {exp.logo && (
-                    <div className="w-14 h-14 rounded-xl bg-white border border-border flex items-center justify-center shrink-0 overflow-hidden p-1.5 shadow-sm">
+                    <div className="w-14 h-14 rounded-xl bg-surface border border-border flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
                       <img
                         src={exp.logo}
                         alt={exp.logoAlt || exp.company}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-cover"
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
                         }}
