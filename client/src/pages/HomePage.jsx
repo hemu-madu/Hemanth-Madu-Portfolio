@@ -25,6 +25,7 @@ import {
   Loader2,
   Copy,
   Check,
+  AlertTriangle,
 } from "lucide-react";
 import {
   personalInfo,
@@ -57,6 +58,7 @@ export default function HomePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [copiedField, setCopiedField] = useState(null);
+  const [fallbackData, setFallbackData] = useState(null);
 
   const handleCopy = async (value, label) => {
     try {
@@ -95,6 +97,8 @@ export default function HomePage() {
     }
 
     setIsSubmitting(true);
+    setFallbackData(null);
+
     try {
       await emailjs.send(
         EMAILJS_SERVICE_ID,
@@ -114,10 +118,34 @@ export default function HomePage() {
       });
       setForm({ name: "", email: "", subject: "", message: "" });
       setErrors({});
+      setFallbackData(null);
     } catch (err) {
+      console.error("EmailJS Transmission Error:", err);
+      const errText = String(err?.text || err?.message || "");
+      const isGmailGrantIssue =
+        err?.status === 412 ||
+        errText.toLowerCase().includes("invalid grant") ||
+        errText.toLowerCase().includes("reconnect");
+
+      const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+        form.subject || "Embedded Systems Inquiry"
+      )}&body=${encodeURIComponent(
+        `Hi Hemanth,\n\n${form.message}\n\nBest regards,\n${form.name}\n${form.email}`
+      )}`;
+
+      setFallbackData({
+        mailtoUrl,
+        isGmailGrantIssue,
+        message: isGmailGrantIssue
+          ? "The EmailJS service requires reconnecting the Gmail account in the EmailJS dashboard. You can deliver your message immediately using the mail client link below."
+          : "Automated transmission temporarily unavailable. Click below to deliver via your email client without losing your message.",
+      });
+
       toast({
         title: "Transmission failed",
-        description: `Direct email: ${personalInfo.email}`,
+        description: isGmailGrantIssue
+          ? "EmailJS Gmail grant expired. Use the 1-click mailto option below."
+          : `Direct email: ${personalInfo.email}`,
         variant: "destructive",
       });
     } finally {
@@ -1061,6 +1089,46 @@ export default function HomePage() {
                       </>
                     )}
                   </button>
+
+                  {/* Fallback Action when Automated Email Service requires reconnect */}
+                  {fallbackData && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-xs space-y-3 font-mono mt-3"
+                    >
+                      <div className="flex items-start gap-2">
+                        <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                        <div>
+                          <p className="font-semibold text-amber-300">
+                            {fallbackData.isGmailGrantIssue
+                              ? "EmailJS Gmail Session Expired"
+                              : "Transmission Notice"}
+                          </p>
+                          <p className="text-[11px] text-amber-200/90 mt-1 leading-relaxed">
+                            {fallbackData.message}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <a
+                          href={fallbackData.mailtoUrl}
+                          className="btn-primary text-xs py-2 px-3.5 bg-amber-500 hover:bg-amber-600 text-black font-semibold inline-flex items-center gap-1.5 shadow-sm"
+                        >
+                          <Mail className="w-3.5 h-3.5" />
+                          Send via Email Client (mailto)
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => handleCopy(personalInfo.email, "Email")}
+                          className="btn-outline text-xs py-2 px-3 inline-flex items-center gap-1.5"
+                        >
+                          <Copy className="w-3.5 h-3.5" />
+                          Copy Email Address
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
                 </form>
               </div>
             </div>
